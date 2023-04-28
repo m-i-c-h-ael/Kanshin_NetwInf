@@ -65,9 +65,7 @@ max_pathLenSt= 10  ########### max. considered depth in extracting paths
 max_St_betwSliceTerm_class= 2 #for classical Steiner tree
 max_St_betwSliceTerm_PCST= 2 #for PCST; #5 is too slow for real data
 
-today= Sys.Date()
-today=gsub("-","",today)
-plotDir= paste(loc,'plots/',today,'/',sep='')
+plotDir= paste(loc,'plots/',sep='')
 if (! dir.exists(plotDir)){
   dir.create(plotDir)
 }
@@ -477,14 +475,14 @@ chronoPaths= function(nodePaths_list, TPsPaths_list, typesPaths_list, sigDF, max
                                   sigfTP= sigDF$firstSigTP[match(uniq_pathNodes,sigDF$Gene)])
   
   ## !!!!! you need to write node_idx_trim of CST and PCST to files and combine them manually !!!###
-  #write.csv(node_idx_trim,file=paste(loc,today,'_nodeIdx_',plotSuffix,'.csv',sep=''),row.names=FALSE)
-  #pdf(file=paste(plotDir,today,'_chronopaths_',plotSuffix,'.pdf',sep=''),width=7,height=14)  #inches
+  #write.csv(node_idx_trim,file=paste(loc,'nodeIdx_',plotSuffix,'.csv',sep=''),row.names=FALSE)
+  #pdf(file=paste(plotDir,'chronopaths_',plotSuffix,'.pdf',sep=''),width=7,height=14)  #inches
   ##### open file
   ########## if you instead want order of combination of CST and PCST
   node_idx_trim= read.csv(paste(loc,'20230328_CSTcombPCSTnodeIdx_FC3_maxTree2_maxPath10.csv',sep=''),
                           header=TRUE,stringsAsFactors = FALSE)
   if(plotmode=='indivPlots') {
-    pdf(file=paste(plotDir,today,'_CSTcombPCSTchronopaths_',plotSuffix,'.pdf',sep=''),width=7,height=14)  #inches
+    pdf(file=paste(plotDir,'CSTcombPCSTchronopaths_',plotSuffix,'.pdf',sep=''),width=7,height=14)  #inches
   }
   ##########################
   node_idx_trim[1:5,]
@@ -537,8 +535,8 @@ chronoPaths= function(nodePaths_list, TPsPaths_list, typesPaths_list, sigDF, max
   if(plotmode== 'combPlot'){
     recPlot= recordPlot()
     dev.off()
-    pdf(file=paste(plotDir,today,'_CSTcombPCSTchronopaths_',plotSuffix,'.pdf',sep=''),width=7,height=14)  #inches
-    #png(file=paste(plotDir,today,'_CSTcombPCSTchronopaths_',plotSuffix,'.png',sep=''),width=7,height=14,
+    pdf(file=paste(plotDir,'CSTcombPCSTchronopaths_',plotSuffix,'.pdf',sep=''),width=7,height=14)  #inches
+    #png(file=paste(plotDir,'CSTcombPCSTchronopaths_',plotSuffix,'.png',sep=''),width=7,height=14,
     #   unit='in',res=500)  #inches
     print(recPlot)
   } else {
@@ -868,7 +866,7 @@ plot_graph_overTime= function(all_t_graph_l,plotSuffix=plotSuffix,
     }
     all_t_plot= recordPlot()
     dev.off()
-    svg(paste(plotDir,today,'_netwOvrTime_',plotSuffix,'.svg',sep=''),height=plot_WH,width=plot_WH,
+    svg(paste(plotDir,'netwOvrTime_',plotSuffix,'.svg',sep=''),height=plot_WH,width=plot_WH,
         pointsize=12)  #width and height in inches; cannot be set
     print(all_t_plot)
     dev.off()
@@ -881,7 +879,7 @@ plot_graph_overTime= function(all_t_graph_l,plotSuffix=plotSuffix,
       idx_in_all_t_graph_noNA= idx_in_all_t_graph[!is.na(idx_in_all_t_graph)]
       V(STRING_net_blank)$color[idx_in_all_t_graph_noNA]= 
         V(all_t_graph_l[[1]])$commColWSigf [idx_in_all_t_graph_noNA]
-      svg(paste(plotDir,today,'_netwWithCommOnPaths_',plotSuffix,'.svg',sep=''),width=7,height=7)
+      svg(paste(plotDir,'netwWithCommOnPaths_',plotSuffix,'.svg',sep=''),width=7,height=7)
       par(mar=c(0,0,0,0))
       plot(STRING_net_blank,layout=lay_STRING,vertex.size=3,arrow.width=0.1,
            vertex.label= NA) #vertex.label.cex=0.5,
@@ -906,9 +904,7 @@ plot_graph_overTime= function(all_t_graph_l,plotSuffix=plotSuffix,
       ani.record() #record current frame
     }
     oopt= ani.options(interval = 2,loop=1)
-    #saveGIF(ani.replay(),movie.name=paste(plotDir,today,'_netwVideo_',plotSuffix,'.gif',sep='')) #,movie.name = "testVideo.gif",outdir=paste(loc,'plots',sep='')
-    saveGIF(ani.replay(),movie.name=paste(today,'_netwVideo_',plotSuffix,'.gif',sep=''),outdir=plotDir) #,movie.name = "testVideo.gif",outdir=paste(loc,'plots',sep='')
-    dev.off()
+    saveGIF(ani.replay(),movie.name=paste('netwVideo_',plotSuffix,'.gif',sep='')) #specifying a relative path apparently does not work
   }
   return(list(all_t_graph_l,l,all_t_plot))
 }
@@ -1092,7 +1088,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     dim(firstSigDF_protA) #number of significant proteins
     firstSigDF_protA[1:4,]
     dim(firstSigDF_protA)[1]   ## Number of signif. diff. phos. proteins
-    #write.csv(firstSigDF_protA,paste(loc,today,'_allSignif',FC_cutoff,'Xcutoff.csv',sep=''),row.names = FALSE)
+    #write.csv(firstSigDF_protA,paste(loc,'allSignif',FC_cutoff,'Xcutoff.csv',sep=''),row.names = FALSE)
     #######################################
     #######################################
     
@@ -1263,7 +1259,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
         # main='Underl. netw. with all edges')  #layout= l*0.2,,rescale=FALSE
     A1= recordPlot()
     dev.off()
-    png(paste(plotDir,today,'_unexpand_FCthr',FC_cutoff,'.png',sep=''))
+    png(paste(plotDir,'unexpand_FCthr',FC_cutoff,'.png',sep=''))
     print(A1)
     dev.off()
     plot_L= c(plot_L,'A1'=list(A1))
@@ -1410,7 +1406,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   ### Expand network ###
     #C: Get PPI network
     #generate STRING network from all changing proteins
-    #write.csv(firstSigDF_prot,paste(loc,today,'_allSignif',FC_cutoff,'Xcutoff.csv',sep=''),row.names = FALSE)
+    #write.csv(firstSigDF_prot,paste(loc,'allSignif',FC_cutoff,'Xcutoff.csv',sep=''),row.names = FALSE)
      #expand one level: up to 500 proteins: textmining, experiments, databases; high confidence
       #(a few nodes remain unconnected); minimum required interaction score: 0.7
      #download one-way edges .tsv
@@ -1455,7 +1451,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     par(mar=c(1,1,1,1))
     plot(STRING_net, layout= lay_STRING, vertex.size=3,vertex.label= NA)  #main='Underl. network',axes=TRUE
     B1= recordPlot()
-    png(paste(plotDir,today,'_STRING_FCthr',FC_cutoff,'_expEvid',expEvid_cut,'.png',sep=''))
+    png(paste(plotDir,'STRING_FCthr',FC_cutoff,'_expEvid',expEvid_cut,'.png',sep=''))
     print(B1)
     dev.off()
     plot_L= c(plot_L,'B1'=list(B1))
@@ -1476,8 +1472,8 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     for (l1 in seq_along(1:length(g_comm))){
       comm_listList[[l1]]= V(STRING_net_comm)$name[membership(g_comm)==l1]
     }
-    #lapply(comm_listList, write, paste(loc,today,'_communities.txt',sep=''), append=TRUE, ncolumns=1000) #specify columns, otherwise truncated
-    #write.csv(V(STRING_net)$name,paste(loc,today,'_protSTRINGnet.txt',sep='')) #background
+    #lapply(comm_listList, write, paste(loc,'communities.txt',sep=''), append=TRUE, ncolumns=1000) #specify columns, otherwise truncated
+    #write.csv(V(STRING_net)$name,paste(loc,'protSTRINGnet.txt',sep='')) #background
     
     #comm1DF= cbind.data.frame(name=V(STRING_net_comm)$name,commInd= rep(0,length(V(STRING_net_comm)$name)))
     #comm1DF$commInd[membership(g_comm)==1]= 1
@@ -1520,7 +1516,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
          #col= newColsUniq[!is.na(manuGOterms)] ) #not using this simpler form, because I like the colors in the code for manual adjustment
     C1= recordPlot()
     dev.off()
-    png(paste(plotDir,today,'_commun_STRING_expEvid',expEvid_cut,'.png',sep=''),width=7,height=7,unit='in',res=300)
+    png(paste(plotDir,'commun_STRING_expEvid',expEvid_cut,'.png',sep=''),width=7,height=7,unit='in',res=300)
     print(C1)
     dev.off()
     plot_L= c(plot_L,'C1'=list(C1))
@@ -1531,7 +1527,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
           palette=newColsUniq)  #xlim
     C2= recordPlot()
     dev.off()
-    png(paste(plotDir,today,'_commDendro_STRING_expEvid',expEvid_cut,'.png',sep=''))
+    png(paste(plotDir,'commDendro_STRING_expEvid',expEvid_cut,'.png',sep=''))
     print(C2)
     dev.off()
     plot_L= c(plot_L,'C2'=list(C2))
@@ -1554,7 +1550,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     #title(ylab='Within-cluster SSQ',mgp=c(1,1,7))   #label distance from axis
     C3= recordPlot()
     dev.off()
-    png(paste(plotDir,today,'_communDensity_STRING_expEvid',expEvid_cut,'.png',sep=''),width=7,height=7,unit='in',res=300)
+    png(paste(plotDir,'communDensity_STRING_expEvid',expEvid_cut,'.png',sep=''),width=7,height=7,unit='in',res=300)
     print(C3)
     dev.off()
     plot_L= c(plot_L,'C3'=list(C3))
@@ -1577,7 +1573,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     mean(btwns_underl)
     
     B2= recordPlot() #record the plot first
-    png(paste(plotDir,today,'_DegrBtwnDists_STRING_expEvid',expEvid_cut,'.png',sep=''))
+    png(paste(plotDir,'DegrBtwnDists_STRING_expEvid',expEvid_cut,'.png',sep=''))
     print(B2)
     dev.off()
     plot_L= c(plot_L,'B2'=list(B2))
@@ -1695,7 +1691,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
           #https://stackoverflow.com/questions/14472079/match-vertex-size-to-label-size-in-igraph
           D_curr= recordPlot() 
           dev.off()
-          png(file=paste(plotDir,today,'_Tree_sG',sG_idx,'_',t1,'_',t2,'_',plotSuffix,'.png',sep=''),width=7,height=7,
+          png(file=paste(plotDir,'Tree_sG',sG_idx,'_',t1,'_',t2,'_',plotSuffix,'.png',sep=''),width=7,height=7,
               units='in',res=300)  ###
           print(D_curr)
           dev.off()   ###
@@ -1749,8 +1745,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
             ST_sG_filt_xyDF= ST_sG_filt_xyDF[,-3]
             
             ### if needed
-            #print(paste(today,'_p2c',prizeToCost,'_',t1,'_to_',t2,'.svg',sep=''))
-            #svg(paste(plotDir,today,'_',t1,'_to_',t2,'.svg',sep=''))
+            #svg(paste(plotDir,t1,'_to_',t2,'.svg',sep=''))
             print( 
             ggraph(sG_ST_sG_filt, "manual", x = ST_sG_filt_xyDF[, 1], y = ST_sG_filt_xyDF[, 2]) +
               geom_edge_link(aes(filter = (node1.lvl == 1 & node2.lvl == 1)),
@@ -1846,7 +1841,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     D_bar= recordPlot()
     #box(lwd=1,lty=1)
     dev.off()
-    png(file=paste(plotDir,today,'_Tree_InOut_',plotSuffix,'.png',sep=''),width=10,height=7,
+    png(file=paste(plotDir,'Tree_InOut_',plotSuffix,'.png',sep=''),width=10,height=7,
         units='in',res=300)
     D_bar
     dev.off()
@@ -1854,11 +1849,11 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     
     avgFracRetained= mean(sigfCountInOut_mtxL[[1]][,2]/sigfCountInOut_mtxL[[1]][,1])
     
-    # saveRDS(Edges_l,file=paste(loc,today,'_Edges_l.rds',sep=''))
+    # saveRDS(Edges_l,file=paste(loc,'Edges_l.rds',sep=''))
     # Edges_l= readRDS(file=paste(loc,'20230109_Edges_l.rds',sep='')) #laod packages; define loc and functions
-    # saveRDS(firstSigDF_prot,file=paste(loc,today,'_firstSigDF_prot.rds',sep=''))
+    # saveRDS(firstSigDF_prot,file=paste(loc,'firstSigDF_prot.rds',sep=''))
     # firstSigDF_prot= readRDS(file=paste(loc,'20230109_firstSigDF_prot.rds',sep='')) #laod packages; define loc and functions
-    # saveRDS(STRING_allSigf_allEvid,file=paste(loc,today,'_STRING_allSigf_allEvid.rds',sep=''))
+    # saveRDS(STRING_allSigf_allEvid,file=paste(loc,'STRING_allSigf_allEvid.rds',sep=''))
     # STRING_allSigf_allEvid= readRDS(file=paste(loc,'20230109_STRING_allSigf_allEvid.rds',sep='')) #laod packages; define loc and functions
     
     # TPs_wBetw= sort(c(TPs,TPs[1:(length(TPs)-1)]+2.5))
@@ -1867,7 +1862,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     # for(alph in seq(0,90,10)){
     #   for(bet in seq(0,90,10)){
     #     all_t_graph_xy <- layout_as_multilevel(all_t_graph_l[[1]],type = "all",alpha=alph,beta=bet)
-    #     pdf(file=paste(plotdir,today,'_treeOverTime_alph',alph,'_bet',bet,'.pdf',sep=''))
+    #     pdf(file=paste(plotdir,'treeOverTime_alph',alph,'_bet',bet,'.pdf',sep=''))
     #     print(
     #       ggraph(all_t_graph_l[[1]], "manual", x = all_t_graph_xy[, 1], y = all_t_graph_xy[, 2]) +
     #         geom_edge_link(edge_width = 0.3,arrow= arrow(),end_cap = circle(3, 'mm') ) + #do not end in center of node
@@ -1954,7 +1949,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   length( E(all_t_graph_l2[[1]]))   #number of edges
   length(findSubgraphs(all_t_graph_l2[[1]]))  #number of subgraphs
   
-  # saveRDS(all_t_graph_l2,file=paste(loc,today,'_all_t_graph_l2.rds',sep=''))
+  # saveRDS(all_t_graph_l2,file=paste(loc,'all_t_graph_l2.rds',sep=''))
   # all_t_graph_l2= readRDS(file=paste(loc,'20230322_all_t_graph_l2.rds',sep='')) #laod packages; define loc and functions
   
   # TPs_wBetw= sort(c(TPs,TPs[1:(length(TPs)-1)]+2.5))
@@ -1963,7 +1958,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   # for(alph in seq(0,90,10)){
   #   for(bet in seq(0,90,10)){
   #     all_t_graph_xy <- layout_as_multilevel(all_t_graph_l2[[1]],type = "all",alpha=alph,beta=bet)
-  #     pdf(file=paste(plotdir,today,'_treeOverTime_alph',alph,'_bet',bet,'.pdf',sep=''))
+  #     pdf(file=paste(plotdir,'treeOverTime_alph',alph,'_bet',bet,'.pdf',sep=''))
   #     print(
   #       ggraph(all_t_graph_l2[[1]], "manual", x = all_t_graph_xy[, 1], y = all_t_graph_xy[, 2]) +
   #         geom_edge_link(edge_width = 0.3,arrow= arrow(),end_cap = circle(3, 'mm') ) + #do not end in center of node
@@ -2081,7 +2076,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     firstSigDF_prot$Gene[firstSigDF_prot$Gene %in% unique(unlist(compl_pathsN3 ))]
     par(mar=c(4,4,1,1))
     
-    #png(paste(plotDir,today,'_losses_',plotSuffix,'.png',sep=''))
+    #png(paste(plotDir,'losses_',plotSuffix,'.png',sep=''))
     x= barplot(c(noSigfProt,noSTRINGfilt,noInTree,noPathsTrim),ylab='# proteins',
                ylim= c(0,noSigfProt+2)) #,noInSTRINGnoPathsUntrim,
     names.arg =c('experiment','STRING filt.','on trees','on paths')  #'STRING','on trim. paths',
@@ -2099,7 +2094,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     #     count= c(noSigfProt,noSTRINGfilt,noInTree,noPathsTrim),
     #     PC= rep(PC_ans,4)
     #   ),
-    #   file= paste(today,'_losses_PC',PC_ans,'.csv',sep=''),row.names = FALSE
+    #   file= paste('losses_PC',PC_ans,'.csv',sep=''),row.names = FALSE
     # )
   }
   
@@ -2159,14 +2154,14 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   colnames(allTrimPathsDF)= c('pathNo','node','node_idx','TP','type','sigf')
   
   #summarize path lengths: all nodes
-  png(paste(plotDir,today,'_pathLenHistAll_',plotSuffix,'.png',sep=''))
+  png(paste(plotDir,'pathLenHistAll_',plotSuffix,'.png',sep=''))
   avg_nodInPath= mean(unlist(lapply(compl_pathsN3,length)))
   hist(unlist(lapply(compl_pathsN3,length)),breaks=seq(-0.5,max(unlist(lapply(compl_pathsN3,length)))+0.5),
        xlab='Path lengths',main='')
   dev.off()
   
   #summarize path lengths: termini
-  png(paste(plotDir,today,'_pathLenHistTermini_',plotSuffix,'.png',sep=''))
+  png(paste(plotDir,'pathLenHistTermini_',plotSuffix,'.png',sep=''))
   hist(unlist(lapply(compl_pathsType3, function(x) {sum(x=='out-term' | x=='in-term')})),
        breaks=seq(-0.5,max(unlist(lapply(compl_pathsType3, function(x) {sum(x=='out-term' | x=='in-term')})))+0.5),
        xlab='# sigf. prot. in paths',main='')
@@ -2251,7 +2246,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   if(all(log10_0subs_btwns==0)){log10_0subs_btwns= 
     log10_0subs_btwns+runif(n=length(log10_0subs_btwns),min=0,max=0.2)}
   ########## if needed ############
-  svg(paste(plotDir,today,'_btwns_corr_',plotSuffix,'.svg',sep=''))
+  svg(paste(plotDir,'btwns_corr_',plotSuffix,'.svg',sep=''))
   par(pty='s')
   plotmax= max(c(log10_0subs_corresp_btwns_underl,log10_0subs_btwns))
   plot(log10_0subs_corresp_btwns_underl,log10_0subs_btwns,xlim=c(0,plotmax),ylim=c(0,plotmax),
@@ -2289,9 +2284,9 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   l_sG1_N3_wHubs_sort= l[match(V(all_t_graph_sG1_N3_wHubs_sort)$name,l_nodes),] #new layout: remove nodes from layout that are no longer present and sort
   ### if needed
   if (PC_ans== 'y'){
-    svg(paste(plotDir,today,'_incrBtwnsNetwOvrTime_',plotSuffix,'.svg',sep=''))  #increased betweenness in inferred compared to underlying graph
+    svg(paste(plotDir,'incrBtwnsNetwOvrTime_',plotSuffix,'.svg',sep=''))  #increased betweenness in inferred compared to underlying graph
   } else {
-    svg(paste(plotDir,today,'_incrBtwnsNetwOvrTime_',plotSuffix,'.svg',sep=''))
+    svg(paste(plotDir,'incrBtwnsNetwOvrTime_',plotSuffix,'.svg',sep=''))
   }
   ###
   #par(mar=c(2,2,0,0))
@@ -2479,7 +2474,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   
   #plot all three into one plot (http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/)
   plot_L= c(plot_L,'G1'=list(undNet_plot),'G2'=list(treePlot),'G3'=list(pathPlot))
-  svg(paste(plotDir,today,'_edgeScores_',plotSuffix,'.svg',sep=''))
+  svg(paste(plotDir,'edgeScores_',plotSuffix,'.svg',sep=''))
   Gcomb= ggpubr::ggarrange(undNet_plot,
                            treePlot,
                            pathPlot, 
@@ -2528,7 +2523,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
 
   # arranging multiple plots: https://bookdown.org/ndphillips/YaRrr/arranging-plots-with-parmfrow-and-layout.html
   #dev.new(width=7,height=5,noRStudioGD=TRUE)
-  png(paste(plotDir,today,'_scoreScatterWBoxes_',plotSuffix,'.jpg',sep=''),width=7,height=5,units='in',res=500)
+  png(paste(plotDir,'scoreScatterWBoxes_',plotSuffix,'.jpg',sep=''),width=7,height=5,units='in',res=500)
   layMtx=matrix(c(1,2,3),ncol=3)
   layout(mat=layMtx,heights= 5,width=c(5,1,1)) #one row, two columns
   #layout.show()
@@ -2640,7 +2635,7 @@ plot_LoL
 
 A1= plot_LoL[[1]][['A1']]
 A2= plot_LoL[[1]][['A2']]
-png(paste(loc,'plots/',today,'_FigA.png',sep=''),width=5,height=20,units='in',res=500)
+png(paste(loc,'plots/','FigA.png',sep=''),width=5,height=20,units='in',res=500)
 ggpubr::ggarrange(A1,A2,nrow=2,ncol=1,labels=c('A','B'),widths=3.5,heights=c(3.5,10.5))
 dev.off()
 
@@ -2664,14 +2659,14 @@ B3= ggplot(data=losses, aes(x=var,y=count,group=PC,fill=PC))+
   theme(axis.title.x= element_blank(), text=element_text(size=15),
         legend.position = "none")
 #B3= recordPlot()
-png(paste(plotDir,today,'_losses.png',sep=''))
+png(paste(plotDir,'losses.png',sep=''))
 print(B3)
 dev.off()
 
 # fig. B
 B1= plot_LoL[[1]][['B1']]
 B2= plot_LoL[[1]][['B2']]
-png(paste(loc,'plots/',today,'_FigB.png',sep=''),width=21,height=6,units='in',res=500)
+png(paste(loc,'plots/','FigB.png',sep=''),width=21,height=6,units='in',res=500)
 ggarrange(B1,B2,B3,nrow=1,ncol=3,labels=c('A','B','C'),widths=c(3,2.1,2.9),heights=2.5)
 dev.off()
 
@@ -2680,7 +2675,7 @@ dev.off()
 C1= plot_LoL[[1]][['C1']]
 C2= plot_LoL[[1]][['C2']]
 C3= plot_LoL[[1]][['C3']]
-png(paste(loc,'plots/',today,'_FigC.png',sep=''),width=10,height=8,units='in',res=500)
+png(paste(loc,'plots/','FigC.png',sep=''),width=10,height=8,units='in',res=500)
 ggarrange(C1,
           ggarrange(C2,C3,nrow=2,ncol=1,labels=c('B','C'),widths=c(4),heights=c(4,4)),
 nrow=1,ncol=2,widths=c(6,4),heights=c(8),labels=c('A') )
@@ -2710,7 +2705,7 @@ D9b= plot_LoL[[2]][['treePlot_list9']]
 D10b= plot_LoL[[2]][['treePlot_list10']]
 D_bar_b= plot_LoL[[2]][['D_bar']]
 
-png(paste(loc,'plots/',today,'_FigD.png',sep=''),width=12.5,height=20,unit='in',res=500)
+png(paste(loc,'plots/','FigD.png',sep=''),width=12.5,height=20,unit='in',res=500)
 ggarrange(
   ggarrange(D1a,D2a,D3a,D4a,
             nrow=1,ncol=4,widths=c(3,3,3,3),heights=c(3),labels=c('A','','')),
@@ -2736,7 +2731,7 @@ E1a= plot_LoL[[1]][['E1']]
 E2a= plot_LoL[[1]][['E2']]
 E1b= plot_LoL[[2]][['E1']]
 E2b= plot_LoL[[2]][['E2']]
-png(paste(loc,'plots/',today,'_FigE.png',sep=''),width=6,height=11.5,units='in',res=500)
+png(paste(loc,'plots/','FigE.png',sep=''),width=6,height=11.5,units='in',res=500)
 ggarrange(
   ggarrange(E1a,E2a,nrow=2,ncol=1,labels=c('A','C'),widths=c(3),heights=c(3,8.5)),
   ggarrange(E1b,E2b,nrow=2,ncol=1,labels=c('B','D'),widths=c(3),heights=c(3,8.5)),
@@ -2746,7 +2741,7 @@ dev.off()
 # fig. F
 F1a= plot_LoL[[1]][['F1']]
 F1b= plot_LoL[[2]][['F1']]
-png(paste(loc,'plots/',today,'_FigF.png',sep=''),width=8,height=4,units='in',res=500)
+png(paste(loc,'plots/','FigF.png',sep=''),width=8,height=4,units='in',res=500)
 ggarrange(F1a,F1b,nrow=1,ncol=2,labels=c('A','B'),widths=c(4,4),heights=c(4))
 dev.off()
 
@@ -2757,7 +2752,7 @@ G3a= plot_LoL[[1]][['G3']]
 G1b= plot_LoL[[2]][['G1']]
 G2b= plot_LoL[[2]][['G2']]
 G3b= plot_LoL[[2]][['G3']]
-png(paste(loc,'plots/',today,'_FigG.png',sep=''),width=6,height=6,units='in',res=500)
+png(paste(loc,'plots/','FigG.png',sep=''),width=6,height=6,units='in',res=500)
 #dev.new(width=6,height=6,noRStudioGD = TRUE)
 leg= get_legend(G1a,position='bottom')
 ggarrange(
@@ -2810,10 +2805,10 @@ expButNotObs[expButNotObs %in% V(all_t_graph_l2[[1]])$name]
 #GO analysis
 #done externally: https://yeastgenome.org/goTermFinder
 targets= V(all_t_graph_l2[[1]])$name
-# write.table(V(all_t_graph_l2[[1]])$name,paste(loc,today,'_protIn_all_t_graph_',plotSuffix,'.txt',sep=''),
+# write.table(V(all_t_graph_l2[[1]])$name,paste(loc,'protIn_all_t_graph_',plotSuffix,'.txt',sep=''),
 #             ,row.names = FALSE)
 underlProt_1shell_filt= V(STRING_net)$name
- # write.table(V(STRING_net)$name,paste(loc,today,'_protInUnderl_expEvid',expEvid_cut,'_',
+ # write.table(V(STRING_net)$name,paste(loc,'protInUnderl_expEvid',expEvid_cut,'_',
  #                                      plotSuffix,'.txt',sep=''),row.names = FALSE)
 posRegCellCyc= str_to_title(c('GLC7', 'EDE1', 'RIM15', 'MIH1', 'CLB2', 'CDC28', 'IGO1', 'ZDS1', 'DBF4', 'IGO2', 
                               'CDC5', 'KSS1', 'CDC55'))
@@ -2941,8 +2936,8 @@ head(IDmap)
 clustDF= cbind.data.frame(as.data.frame(clust_STRINGallSigf),clustCol)
 clustDF$gene= rownames(clustDF)
 clustDF2= merge(x=clustDF, y=IDmap, by.x='gene', by.y='Gene.Name',all.x=TRUE)
-#write.csv(clustDF2,paste(loc,today,'_clustSTRING_allSigf_DBscore2.csv',sep=''),row.names = FALSE)
-#write.csv(clustDF2,paste(loc,today,'_clustSTRING_allSigf_textmScore2.csv',sep=''),row.names = FALSE)
+#write.csv(clustDF2,paste(loc,'clustSTRING_allSigf_DBscore2.csv',sep=''),row.names = FALSE)
+#write.csv(clustDF2,paste(loc,'clustSTRING_allSigf_textmScore2.csv',sep=''),row.names = FALSE)
 
 #DB score
 manu_clustGO= c('misc',
@@ -3015,9 +3010,3 @@ for (ro in 1:dim(STRING_Tree_mtx)[1]){
 #5, Show the heatmap with both triangles filled
 heatmap.2(STRING_Tree_mtx,trace='none',col=colorRampPalette(brewer.pal(9,'Blues')),
           dendrogram='none', Rowv=FALSE, Colv=FALSE, labRow=FALSE, labCol=FALSE)   #no clustering
-
-# Can we determine what the populations with low and high DB score are
-DB_le0.25= STRING_allSigf_copy[STRING_allSigf_copy$DBscore<.25,]
-#write.csv(DB_le0.25,paste(loc,today,'DBscore_le0.25.csv',sep=''))
-DB_gr0.75= STRING_allSigf_copy[STRING_allSigf_copy$DBscore>0.75,]
-#write.csv(DB_gr0.75,paste(loc,today,'DBscore_gr0.75.csv',sep=''))

@@ -1,0 +1,261 @@
+BIOGRID ID	ENTREZ GENE ID	SYSTEMATIC NAME	OFFICIAL SYMBOL	SYNONYMS	ORGANISM ID	ORGANISM NAME	INTERACTION COUNT	PTM COUNT	CHEMICAL INTERACTION COUNT	SOURCE	CATEGORY VALUES	CATEGORY IDS	CATEGORY TAGS	CATEGORY EVIDENCE VALUES	CATEGORY EVIDENCE IDS	CATEGORY EVIDENCE CLASSES	CATEGORY EVIDENCE METHODS	SUBCATEGORY VALUES	SUBCATEGORY IDS	SUBCATEGORY TAGS	SUBCATEGORY EVIDENCE VALUES	SUBCATEGORY EVIDENCE IDS	SUBCATEGORY EVIDENCE CLASSES	SUBCATEGORY EVIDENCE METHODS
+35540	855418	YNL298W	CLA4	ERC10|serine/threonine protein kinase CLA4|L000000564|L000002643	559292	Saccharomyces cerevisiae (S288c)	1433	15	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+34656	854441	YOR267C	HRK1	putative serine/threonine protein kinase HRK1	559292	Saccharomyces cerevisiae (S288c)	211	51	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31293	850706	YLR019W	PSR2	-	559292	Saccharomyces cerevisiae (S288c)	98	7	0	BIOGRID	Phosphatase	-	-	-	-	-	-	-	-	-	-	-	-	-
+34419	854179	YOR014W	RTS1	SCS1|protein phosphatase 2A regulatory subunit RTS1|L000001786	559292	Saccharomyces cerevisiae (S288c)	713	13	0	BIOGRID	Phosphatase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+33322	852971	YGR080W	TWF1	L000004372	559292	Saccharomyces cerevisiae (S288c)	103	4	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+35675	855568	YNL154C	YCK2	serine/threonine protein kinase YCK2|L000002501	559292	Saccharomyces cerevisiae (S288c)	592	16	0	BIOGRID	Kinase	-	-	-	-	-	-	CK1	-	-	-	-	-	-
+31117	850515	YFL029C	CAK1	CIV1|cyclin-dependent protein kinase-activating kinase CAK1|L000003177	559292	Saccharomyces cerevisiae (S288c)	312	2	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+36873	856866	YER129W	SAK1	PAK1|serine/threonine protein kinase SAK1|L000001333	559292	Saccharomyces cerevisiae (S288c)	223	17	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31114	850511	YFL033C	RIM15	TAK1|protein kinase RIM15|L000003524|L000003204	559292	Saccharomyces cerevisiae (S288c)	603	43	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+35629	855514	YNL207W	RIO2	protein kinase RIO2	559292	Saccharomyces cerevisiae (S288c)	477	13	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+35279	855130	YMR104C	YPK2	YKR2|putative protein kinase YPK2|L000002542	559292	Saccharomyces cerevisiae (S288c)	152	29	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+32030	851536	YDL025C	RTK1	putative serine/threonine protein kinase RTK1	559292	Saccharomyces cerevisiae (S288c)	149	27	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+36639	856612	YHR205W	SCH9	HRM2|KOM1|serine/threonine protein kinase SCH9|L000001810	559292	Saccharomyces cerevisiae (S288c)	896	30	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+31198	850601	YFR040W	SAP155	L000002598	559292	Saccharomyces cerevisiae (S288c)	466	12	0	BIOGRID	Phosphatase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+32336	851877	YDR283C	GCN2	AAS1|AAS102|NDR2|serine/threonine-protein kinase GCN2|L000000681	559292	Saccharomyces cerevisiae (S288c)	439	15	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+32038	851545	YDL017W	CDC7	LSD6|SAS1|serine/threonine protein kinase CDC7|L000000247	559292	Saccharomyces cerevisiae (S288c)	837	8	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+35824	855731	YNL001W	DOM34	ribosome dissociation factor DOM34|L000000517	559292	Saccharomyces cerevisiae (S288c)	429	1	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+31927	851421	YDL134C	PPH21	phosphoprotein phosphatase 2A catalytic subunit PPH21|L000001472	559292	Saccharomyces cerevisiae (S288c)	380	4	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+35386	855248	YMR208W	ERG12	RAR1|mevalonate kinase|L000000578	559292	Saccharomyces cerevisiae (S288c)	101	2	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+35855	855765	YNR031C	SSK2	mitogen-activated protein kinase kinase kinase SSK2|L000002826	559292	Saccharomyces cerevisiae (S288c)	428	24	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+35837	855746	YNR012W	URK1	uridine kinase URK1|L000002440	559292	Saccharomyces cerevisiae (S288c)	97	6	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+36030	855950	YPL153C	RAD53	LSD1|MEC2|SPK1|serine/threonine/tyrosine protein kinase RAD53|L000001573	559292	Saccharomyces cerevisiae (S288c)	1125	37	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+33132	852758	YGL119W	COQ8	ABC1|protein kinase COQ8|L000000010	559292	Saccharomyces cerevisiae (S288c)	148	1	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+31516	850950	YLR248W	RCK2	CLK1|CMK3|serine/threonine protein kinase RCK2|L000001593	559292	Saccharomyces cerevisiae (S288c)	171	18	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+34303	854053	YOL100W	PKH2	serine/threonine protein kinase PKH2|L000004617	559292	Saccharomyces cerevisiae (S288c)	112	25	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+34153	853891	YKR021W	ALY1	ART6	559292	Saccharomyces cerevisiae (S288c)	71	24	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+31182	850585	YFR028C	CDC14	OAF3|phosphoprotein phosphatase CDC14|L000000254	559292	Saccharomyces cerevisiae (S288c)	895	11	0	BIOGRID	Phosphatase	-	-	-	-	-	-	DSP	-	-	-	-	-	-
+32529	852088	YDR477W	SNF1	CAT1|CCR1|GLC2|HAF3|PAS14|AMP-activated serine/threonine-protein kinase catalytic subunit SNF1|L000001944	559292	Saccharomyces cerevisiae (S288c)	1402	41	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+34460	854227	YOR061W	CKA2	YOR29-12|casein kinase 2 catalytic subunit CKA2|L000000344	559292	Saccharomyces cerevisiae (S288c)	640	4	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+31048	850436	YCR073C	SSK22	mitogen-activated protein kinase kinase kinase SSK22|L000002827	559292	Saccharomyces cerevisiae (S288c)	107	9	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+32836	852433	YBR136W	MEC1	ESR1|RAD31|SAD3|protein kinase MEC1|L000000586|S000029404|S000007656	559292	Saccharomyces cerevisiae (S288c)	778	6	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+36877	856870	YER133W	GLC7	CID1|DIS2|type 1 serine/threonine-protein phosphatase catalytic subunit GLC7|DIS2S1|PP1|L000000706	559292	Saccharomyces cerevisiae (S288c)	1058	14	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+32520	852077	YDR466W	PKH3	protein kinase PKH3	559292	Saccharomyces cerevisiae (S288c)	154	16	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+33920	853632	YKL203C	TOR2	DRR2|phosphatidylinositol kinase-related protein kinase TOR2|L000002323	559292	Saccharomyces cerevisiae (S288c)	701	10	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+33922	853635	YKL198C	PTK1	KKT8|POT1|STK1|YKL199C|YKT9|putative serine/threonine protein kinase PTK1|L000003491	559292	Saccharomyces cerevisiae (S288c)	220	2	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31478	850907	YLR210W	CLB4	B-type cyclin CLB4|L000000352	559292	Saccharomyces cerevisiae (S288c)	179	2	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+31570	851014	YLR305C	STT4	1-phosphatidylinositol 4-kinase STT4|L000002137	559292	Saccharomyces cerevisiae (S288c)	377	8	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+32301	851838	YDR251W	PAM1	L000001334	559292	Saccharomyces cerevisiae (S288c)	107	33	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+36869	856862	YER125W	RSP5	MDP1|MUT2|NPI1|SMM1|UBY1|NEDD4 family E3 ubiquitin-protein ligase|L000001054|L000001779|L000001220	559292	Saccharomyces cerevisiae (S288c)	1944	22	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+30987	850366	YCR008W	SAT4	HAL4|serine/threonine protein kinase SAT4|L000004136	559292	Saccharomyces cerevisiae (S288c)	281	7	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+36867	856860	YER123W	YCK3	CKI3|casein kinase YCK3|L000002915	559292	Saccharomyces cerevisiae (S288c)	203	17	0	BIOGRID	Kinase	-	-	-	-	-	-	CK1	-	-	-	-	-	-
+33096	852719	YGL158W	RCK1	putative serine/threonine protein kinase RCK1|L000001592	559292	Saccharomyces cerevisiae (S288c)	230	7	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+35208	855052	YMR036C	MIH1	putative tyrosine protein phosphatase MIH1|L000001111	559292	Saccharomyces cerevisiae (S288c)	237	18	0	BIOGRID	Phosphatase	-	-	-	-	-	-	DSP	-	-	-	-	-	-
+34403	854161	YOL001W	PHO80	AGS3|TUP7|VAC5|phoR|L000001426	559292	Saccharomyces cerevisiae (S288c)	874	6	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+30980	850358	YCR002C	CDC10	septin CDC10|L000000250	559292	Saccharomyces cerevisiae (S288c)	788	13	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+33595	853275	YJL164C	TPK1	PKA1|SRA3|cAMP-dependent protein kinase catalytic subunit TPK1|L000002045	559292	Saccharomyces cerevisiae (S288c)	615	5	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+34878	854693	YIL113W	SDP1	mitogen-activated protein kinase tyrosine protein phosphatase SDP1|L000004339	559292	Saccharomyces cerevisiae (S288c)	82	1	0	BIOGRID	Phosphatase	-	-	-	-	-	-	DSP	-	-	-	-	-	-
+35532	855409	YNL307C	MCK1	CMS1|YPK1|serine/threonine/tyrosine protein kinase MCK1|L000001036|S000029094|L000000369	559292	Saccharomyces cerevisiae (S288c)	908	12	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+36519	856484	YHR084W	STE12	homeodomain family transcription factor STE12|L000002119	559292	Saccharomyces cerevisiae (S288c)	190	17	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+32028	851533	YDL028C	MPS1	PAC8|RPK1|serine/threonine/tyrosine protein kinase MPS1|L000001698	559292	Saccharomyces cerevisiae (S288c)	817	52	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+36228	856167	YPR054W	SMK1	mitogen-activated protein kinase SMK1|L000001933	559292	Saccharomyces cerevisiae (S288c)	83	0	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+36461	856425	YHR030C	SLT2	BYC2|LYT2|MPK1|SLK2|mitogen-activated serine/threonine-protein kinase SLT2|L000001919	559292	Saccharomyces cerevisiae (S288c)	2027	20	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+31667	851126	YLR410W	VIP1	inositol polyphosphate kinase VIP1|L000004547	559292	Saccharomyces cerevisiae (S288c)	811	26	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+34085	853818	YKL048C	ELM1	LDB9|serine/threonine protein kinase ELM1|L000000548	559292	Saccharomyces cerevisiae (S288c)	1330	5	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31857	851339	YDL188C	PPH22	PPH2|phosphoprotein phosphatase 2A catalytic subunit PPH22|L000001473	559292	Saccharomyces cerevisiae (S288c)	241	5	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+35649	855538	YNL183C	NPR1	serine/threonine protein kinase NPR1|L000001273	559292	Saccharomyces cerevisiae (S288c)	232	55	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+36287	856236	YPR119W	CLB2	B-type cyclin CLB2|L000000350	559292	Saccharomyces cerevisiae (S288c)	679	6	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+31053	850441	YCR079W	PTC6	AUP1|PPP2|type 2C protein phosphatase PTC6	559292	Saccharomyces cerevisiae (S288c)	266	2	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPM	-	-	-	-	-	-
+36510	856475	YHR076W	PTC7	type 2C protein phosphatase PTC7	559292	Saccharomyces cerevisiae (S288c)	140	1	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPM	-	-	-	-	-	-
+33969	853686	YKL168C	KKQ8	putative serine/threonine protein kinase KKQ8|L000004097	559292	Saccharomyces cerevisiae (S288c)	187	19	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31749	851216	YAL017W	PSK1	FUN31|serine/threonine protein kinase PSK1|L000000646	559292	Saccharomyces cerevisiae (S288c)	137	45	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+32826	852422	YBR125C	PTC4	GCT1|type 2C protein phosphatase PTC4	559292	Saccharomyces cerevisiae (S288c)	239	7	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPM	-	-	-	-	-	-
+32559	852119	YDR507C	GIN4	ERC47|protein kinase GIN4|L000002876	559292	Saccharomyces cerevisiae (S288c)	526	73	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+36503	856468	YHR071W	PCL5	L000004037	559292	Saccharomyces cerevisiae (S288c)	87	2	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+34603	854383	YOR208W	PTP2	tyrosine protein phosphatase PTP2|L000001526	559292	Saccharomyces cerevisiae (S288c)	136	4	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PTP	-	-	-	-	-	-
+34107	853844	YKL024C	URA6	SOC8|bifunctional uridylate/adenylate kinase|L000002435	559292	Saccharomyces cerevisiae (S288c)	254	6	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+32492	852046	YDR436W	PPZ2	L000001479	559292	Saccharomyces cerevisiae (S288c)	118	18	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+31982	851480	YDL079C	MRK1	putative serine/threonine protein kinase MRK1|L000001151	559292	Saccharomyces cerevisiae (S288c)	98	2	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+31279	850692	YLR006C	SSK1	mitogen-activated protein kinase kinase kinase SSK1|L000002084	559292	Saccharomyces cerevisiae (S288c)	221	21	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+30991	850370	YCR012W	PGK1	phosphoglycerate kinase|L000001411	559292	Saccharomyces cerevisiae (S288c)	153	59	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+32763	852351	YBR059C	AKL1	serine/threonine protein kinase AKL1|S000007479	559292	Saccharomyces cerevisiae (S288c)	241	53	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31402	850824	YLR133W	CKI1	bifunctional choline kinase/ethanolamine kinase CKI1|L000000346	559292	Saccharomyces cerevisiae (S288c)	176	19	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+36202	856136	YPR025C	CCL1	TFIIH complex kinase subunit CCL1|L000000237	559292	Saccharomyces cerevisiae (S288c)	199	4	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+32011	851513	YDL047W	SIT4	PPH1|type 2A-related serine/threonine-protein phosphatase SIT4|L000001901	559292	Saccharomyces cerevisiae (S288c)	319	2	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+32017	851520	YDL042C	SIR2	MAR1|NAD-dependent histone deacetylase SIR2|L000001895	559292	Saccharomyces cerevisiae (S288c)	666	5	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+33814	853520	YJR057W	CDC8	bifunctional thymidylate/uridylate kinase|L000000248	559292	Saccharomyces cerevisiae (S288c)	786	0	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+36517	856482	YHR082C	KSP1	putative serine/threonine protein kinase KSP1|L000000921	559292	Saccharomyces cerevisiae (S288c)	577	48	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+33816	853522	YJR059W	PTK2	STK2|protein kinase PTK2|L000003492	559292	Saccharomyces cerevisiae (S288c)	914	49	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31507	850941	YLR240W	VPS34	END12|PEP15|STT8|VPL7|VPS7|VPT29|phosphatidylinositol 3-kinase VPS34|L000002476	559292	Saccharomyces cerevisiae (S288c)	152	3	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+31908	851400	YDL155W	CLB3	B-type cyclin CLB3|L000000351	559292	Saccharomyces cerevisiae (S288c)	241	7	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+31905	851396	YDL159W	STE7	mitogen-activated protein kinase kinase STE7|L000002117	559292	Saccharomyces cerevisiae (S288c)	141	4	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+32799	852390	YBR093C	PHO5	acid phosphatase PHO5|phoE|L000001421	559292	Saccharomyces cerevisiae (S288c)	95	1	0	BIOGRID	Phosphatase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+35668	855561	YNL161W	CBK1	serine/threonine protein kinase CBK1|L000004609	559292	Saccharomyces cerevisiae (S288c)	218	11	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+35856	855766	YNR032W	PPG1	putative serine/threonine-protein kinase PPG1|L000001470	559292	Saccharomyces cerevisiae (S288c)	287	0	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+35153	854992	YML016C	PPZ1	L000001478	559292	Saccharomyces cerevisiae (S288c)	484	46	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+36288	856237	YPR120C	CLB5	B-type cyclin CLB5|L000000353	559292	Saccharomyces cerevisiae (S288c)	574	3	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+34247	853992	YOL128C	YGK3	serine/threonine protein kinase YGK3	559292	Saccharomyces cerevisiae (S288c)	72	4	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+34032	853760	YKL101W	HSL1	ELM2|NIK1|protein kinase HSL1|L000003129|L000002839	559292	Saccharomyces cerevisiae (S288c)	941	75	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+34736	854533	YOR351C	MEK1	MRE4|serine/threonine protein kinase MEK1|L000001062|L000001148	559292	Saccharomyces cerevisiae (S288c)	310	0	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+33408	853065	YGR161C	RTS3	-	559292	Saccharomyces cerevisiae (S288c)	161	28	0	BIOGRID	Phosphatase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+36282	856231	YPR115W	RGC1	GCA1	559292	Saccharomyces cerevisiae (S288c)	121	36	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+36045	855967	YPL137C	GIP3	protein phosphatase regulator GIP3	559292	Saccharomyces cerevisiae (S288c)	93	28	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+31063	850453	YCR091W	KIN82	FPK2|putative serine/threonine protein kinase KIN82|L000000906	559292	Saccharomyces cerevisiae (S288c)	237	10	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+36041	855962	YPL141C	FRK1	protein kinase FRK1	559292	Saccharomyces cerevisiae (S288c)	199	9	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+36042	855963	YPL140C	MKK2	LPI6|SSP33|putative mitogen-activated protein kinase kinase MKK2|L000001118	559292	Saccharomyces cerevisiae (S288c)	206	4	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+36834	856823	YER089C	PTC2	type 2C protein phosphatase PTC2|L000003403	559292	Saccharomyces cerevisiae (S288c)	297	11	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPM	-	-	-	-	-	-
+32481	852032	YDR422C	SIP1	L000001890	559292	Saccharomyces cerevisiae (S288c)	183	45	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+34505	854276	YOR109W	INP53	SJL3|SOP2|phosphatidylinositol-3-/phosphoinositide 5-phosphatase INP53|L000003984	559292	Saccharomyces cerevisiae (S288c)	474	23	0	BIOGRID	Phosphatase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+31248	850657	YLL003W	SFI1	L000003991	559292	Saccharomyces cerevisiae (S288c)	133	13	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+35614	855499	YNL222W	SSU72	L000003154	559292	Saccharomyces cerevisiae (S288c)	413	3	0	BIOGRID	Phosphatase	-	-	-	-	-	-	-	-	-	-	-	-	-
+33370	853023	YGR123C	PPT1	L000002624	559292	Saccharomyces cerevisiae (S288c)	117	1	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+35619	855504	YNL217W	YNL217W	putative serine/threonine-protein phosphatase	559292	Saccharomyces cerevisiae (S288c)	57	1	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+32573	852135	YDR523C	SPS1	putative serine/threonine protein kinase SPS1|L000002024	559292	Saccharomyces cerevisiae (S288c)	120	3	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+36456	856420	YHR025W	THR1	homoserine kinase|L000002298	559292	Saccharomyces cerevisiae (S288c)	129	6	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+34626	854408	YOR233W	KIN4	KIN3|KIN31|putative serine/threonine protein kinase KIN4|L000000904	559292	Saccharomyces cerevisiae (S288c)	465	23	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+36930	856924	YER177W	BMH1	APR6|14-3-3 family protein BMH1|L000000185	559292	Saccharomyces cerevisiae (S288c)	991	16	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+34624	854406	YOR231W	MKK1	SSP32|mitogen-activated protein kinase kinase MKK1|L000001117	559292	Saccharomyces cerevisiae (S288c)	283	10	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+35980	855897	YPL204W	HRR25	KTI14|serine/threonine protein kinase HRR25|L000000810	559292	Saccharomyces cerevisiae (S288c)	852	8	0	BIOGRID	Kinase	-	-	-	-	-	-	CK1	-	-	-	-	-	-
+35981	855898	YPL203W	TPK2	PKA2|PKA3|YKR1|cAMP-dependent protein kinase catalytic subunit TPK2|L000001445	559292	Saccharomyces cerevisiae (S288c)	306	3	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+33866	853574	YJR110W	YMR1	phosphatidylinositol-3-phosphatase YMR1	559292	Saccharomyces cerevisiae (S288c)	75	4	0	BIOGRID	Phosphatase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+32801	852392	YBR095C	RXT2	RAF60	559292	Saccharomyces cerevisiae (S288c)	1026	6	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+32969	852577	YBR274W	CHK1	serine/threonine protein kinase CHK1|L000004861	559292	Saccharomyces cerevisiae (S288c)	640	11	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+32803	852394	YBR097W	VPS15	GRD8|VAC4|VPL19|VPS40|VPT15|ubiquitin-binding serine/threonine protein kinase VPS15|L000002470|L000002924|S000029641|L000002480	559292	Saccharomyces cerevisiae (S288c)	128	5	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+36334	856290	YPR161C	SGV1	BUR1|cyclin-dependent serine/threonine protein kinase SGV1|L000001878	559292	Saccharomyces cerevisiae (S288c)	1389	9	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+35724	855624	YNL099C	OCA1	putative tyrosine protein phosphatase OCA1	559292	Saccharomyces cerevisiae (S288c)	302	3	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PTP	-	-	-	-	-	-
+36920	856914	YER167W	BCK2	CTR7|L000000163	559292	Saccharomyces cerevisiae (S288c)	325	14	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+33650	853338	YJL106W	IME2	SME1|protein kinase IME2|L000000862	559292	Saccharomyces cerevisiae (S288c)	317	4	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+31172	850574	YFR019W	FAB1	SVL7|1-phosphatidylinositol-3-phosphate 5-kinase|L000000597	559292	Saccharomyces cerevisiae (S288c)	546	27	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+35548	855427	YNL289W	PCL1	HCS26|L000002783	559292	Saccharomyces cerevisiae (S288c)	134	15	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+32258	851789	YDR208W	MSS4	1-phosphatidylinositol-4-phosphate 5-kinase|L000001203	559292	Saccharomyces cerevisiae (S288c)	392	30	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+36033	855953	YPL150W	YPL150W	non-specific serine/threonine protein kinase	559292	Saccharomyces cerevisiae (S288c)	301	28	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+33659	853347	YJL098W	SAP185	L000003246	559292	Saccharomyces cerevisiae (S288c)	262	20	0	BIOGRID	Phosphatase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+34990	854815	YIL002C	INP51	SJL1|phosphoinositide 5-phosphatase INP51|L000003319	559292	Saccharomyces cerevisiae (S288c)	180	3	0	BIOGRID	Phosphatase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+34169	853910	YKR038C	KAE1	-	559292	Saccharomyces cerevisiae (S288c)	151	1	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+36278	856227	YPR111W	DBF20	serine/threonine-protein kinase DBF20|L000000490	559292	Saccharomyces cerevisiae (S288c)	92	3	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+34845	854659	YIL147C	SLN1	YPD2|L000001916	559292	Saccharomyces cerevisiae (S288c)	205	20	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+35377	855239	YMR199W	CLN1	cyclin CLN1|L000000357	559292	Saccharomyces cerevisiae (S288c)	383	17	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+34515	854286	YOR119C	RIO1	RRP10|protein kinase RIO1|L000003989	559292	Saccharomyces cerevisiae (S288c)	300	8	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+32178	851700	YDR122W	KIN1	serine/threonine protein kinase KIN1|L000000901	559292	Saccharomyces cerevisiae (S288c)	173	33	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+34357	854111	YOL045W	PSK2	serine/threonine protein kinase PSK2	559292	Saccharomyces cerevisiae (S288c)	297	9	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+33188	852821	YGL059W	PKP2	protein kinase PKP2	559292	Saccharomyces cerevisiae (S288c)	157	6	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+35907	855819	YPL256C	CLN2	cyclin CLN2|L000000358	559292	Saccharomyces cerevisiae (S288c)	620	23	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+35110	854946	YML057W	CMP2	CNA2|calcineurin catalytic subunit A|L000000368	559292	Saccharomyces cerevisiae (S288c)	164	12	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+36513	856478	YHR079C	IRE1	ERN1|bifunctional endoribonuclease/protein kinase IRE1|L000000875	559292	Saccharomyces cerevisiae (S288c)	962	5	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31094	850491	YFL053W	DAK2	L000004204	559292	Saccharomyces cerevisiae (S288c)	40	2	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+33977	853696	YKL161C	KDX1	MLP1|putative protein kinase KDX1	559292	Saccharomyces cerevisiae (S288c)	128	3	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+35093	854929	YML111W	BUL2	ubiquitin-ubiquitin ligase BUL2|L000004755	559292	Saccharomyces cerevisiae (S288c)	291	12	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+31887	851375	YDL179W	PCL9	L000004041	559292	Saccharomyces cerevisiae (S288c)	73	13	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+31881	851368	YDL230W	PTP1	tyrosine protein phosphatase PTP1|L000001525	559292	Saccharomyces cerevisiae (S288c)	154	2	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PTP	-	-	-	-	-	-
+33900	853609	YJR144W	MGM101	MGM9|L000001104	559292	Saccharomyces cerevisiae (S288c)	334	1	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+32643	852224	YBL056W	PTC3	type 2C protein phosphatase PTC3|L000003426	559292	Saccharomyces cerevisiae (S288c)	181	4	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPM	-	-	-	-	-	-
+36535	856502	YHR102W	KIC1	NRK1|putative serine/threonine protein kinase KIC1|L000001276	559292	Saccharomyces cerevisiae (S288c)	64	12	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+31801	851274	YAR019C	CDC15	LYT1|serine/threonine protein kinase CDC15|L000000255	559292	Saccharomyces cerevisiae (S288c)	550	11	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+31800	851273	YAR018C	KIN3	FUN52|NPK1|serine/threonine protein kinase KIN3|L000000903	559292	Saccharomyces cerevisiae (S288c)	427	4	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+33074	852695	YGL180W	ATG1	APG1|AUT3|CVT10|serine/threonine protein kinase ATG1|L000003955|S000028502|L000004761	559292	Saccharomyces cerevisiae (S288c)	931	46	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+33075	852696	YGL179C	TOS3	serine/threonine protein kinase TOS3	559292	Saccharomyces cerevisiae (S288c)	165	3	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31961	851457	YDL101C	DUN1	serine/threonine protein kinase DUN1|L000000531	559292	Saccharomyces cerevisiae (S288c)	861	28	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+36147	856076	YPL031C	PHO85	LDB15|cyclin-dependent serine/threonine-protein kinase PHO85|phoU|L000001431	559292	Saccharomyces cerevisiae (S288c)	947	6	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+34955	854776	YIL035C	CKA1	casein kinase 2 catalytic subunit CKA1|L000000343	559292	Saccharomyces cerevisiae (S288c)	603	1	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+35699	855595	YNL128W	TEP1	L000003922	559292	Saccharomyces cerevisiae (S288c)	132	1	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+33575	853252	YJL187C	SWE1	WEE1|tyrosine protein kinase SWE1|L000002248	559292	Saccharomyces cerevisiae (S288c)	717	54	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+35976	855892	YPL209C	IPL1	PAC15|aurora kinase|L000000871	559292	Saccharomyces cerevisiae (S288c)	720	6	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31166	850568	YFR014C	CMK1	calmodulin-dependent protein kinase CMK1|L000000366	559292	Saccharomyces cerevisiae (S288c)	322	13	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+36841	856831	YER095W	RAD51	MUT5|recombinase RAD51|L000001571	559292	Saccharomyces cerevisiae (S288c)	1317	2	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+32600	852171	YBL103C	RTG3	L000003152	559292	Saccharomyces cerevisiae (S288c)	595	34	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+35872	855783	YNR047W	FPK1	serine/threonine protein kinase FPK1	559292	Saccharomyces cerevisiae (S288c)	194	32	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+35017	854844	YIR026C	YVH1	tyrosine protein phosphatase YVH1|L000002567	559292	Saccharomyces cerevisiae (S288c)	160	6	0	BIOGRID	Phosphatase	-	-	-	-	-	-	DSP	-	-	-	-	-	-
+33353	853003	YGR109C	CLB6	B-type cyclin CLB6|L000000354	559292	Saccharomyces cerevisiae (S288c)	124	0	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+33352	853002	YGR108W	CLB1	SCB1|B-type cyclin CLB1|L000000349	559292	Saccharomyces cerevisiae (S288c)	133	0	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+36137	856065	YPL042C	SSN3	CDK8|GIG2|NUT7|RYE5|SRB10|SSX7|UME5|URR1|cyclin-dependent serine/threonine protein kinase SSN3|L000002795|S000029631|L000002443|S000029520|L000002103	559292	Saccharomyces cerevisiae (S288c)	543	1	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+33844	853552	YJR090C	GRR1	CAT80|COT2|SDC1|SSU2|SCF ubiquitin ligase complex subunit GRR1|L000000730	559292	Saccharomyces cerevisiae (S288c)	203	16	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+33513	853178	YGR262C	BUD32	LDB14|serine/threonine protein kinase BUD32	559292	Saccharomyces cerevisiae (S288c)	207	1	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+34287	854036	YOL113W	SKM1	putative serine/threonine protein kinase SKM1|L000004142	559292	Saccharomyces cerevisiae (S288c)	164	7	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+33440	853100	YGR188C	BUB1	protein kinase BUB1|L000000196	559292	Saccharomyces cerevisiae (S288c)	1099	7	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+35171	855013	YMR001C	CDC5	MSD2|PKX2|polo kinase CDC5|L000000245	559292	Saccharomyces cerevisiae (S288c)	451	23	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+33603	853283	YJL157C	FAR1	cyclin-dependent protein serine/threonine kinase inhibiting protein FAR1|L000000600	559292	Saccharomyces cerevisiae (S288c)	165	19	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+32616	852190	YBL088C	TEL1	DNA-binding protein kinase TEL1|L000002281	559292	Saccharomyces cerevisiae (S288c)	427	6	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+34565	854342	YOR171C	LCB4	sphinganine kinase LCB4|L000004328	559292	Saccharomyces cerevisiae (S288c)	223	30	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+36800	856787	YER059W	PCL6	L000004038	559292	Saccharomyces cerevisiae (S288c)	103	11	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+31954	851450	YDL108W	KIN28	TFIIH complex serine/threonine-protein kinase subunit KIN28|L000000905	559292	Saccharomyces cerevisiae (S288c)	701	3	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+33680	853369	YJL076W	NET1	CFI1|ESC5|SRM8|L000004425	559292	Saccharomyces cerevisiae (S288c)	226	69	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+35573	855454	YNL267W	PIK1	PIK120|PIK41|1-phosphatidylinositol 4-kinase|L000001439|L000001438	559292	Saccharomyces cerevisiae (S288c)	331	20	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+33967	853683	YKL171W	NNK1	protein kinase NNK1	559292	Saccharomyces cerevisiae (S288c)	269	31	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+36092	856016	YPL089C	RLM1	L000003028	559292	Saccharomyces cerevisiae (S288c)	194	10	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+30960	850334	YCL024W	KCC4	-	559292	Saccharomyces cerevisiae (S288c)	179	47	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+33167	852797	YGL083W	SCY1	L000003258	559292	Saccharomyces cerevisiae (S288c)	50	4	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+33287	852931	YGR040W	KSS1	mitogen-activated serine/threonine-protein kinase KSS1|L000000922	559292	Saccharomyces cerevisiae (S288c)	342	3	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+33048	852664	YGL208W	SIP2	SPM2|L000001891|L000001998	559292	Saccharomyces cerevisiae (S288c)	219	19	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+33066	852685	YGL190C	CDC55	TMR4|protein phosphatase 2A regulatory subunit CDC55|L000000282|S000029602|L000003191	559292	Saccharomyces cerevisiae (S288c)	622	5	0	BIOGRID	Phosphatase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+33042	852657	YGL215W	CLG1	L000000356	559292	Saccharomyces cerevisiae (S288c)	282	1	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+33662	853350	YJL095W	BCK1	LAS3|SAP3|SLK1|SSP31|mitogen-activated protein kinase kinase kinase BCK1|L000000162	559292	Saccharomyces cerevisiae (S288c)	1618	45	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+35966	855882	YPL219W	PCL8	L000004040	559292	Saccharomyces cerevisiae (S288c)	162	6	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+36152	856081	YPL026C	SKS1	SHA3|putative serine/threonine protein kinase SKS1|L000004139|L000002824	559292	Saccharomyces cerevisiae (S288c)	174	7	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+35747	855648	YNL076W	MKS1	LYS80|L000001119	559292	Saccharomyces cerevisiae (S288c)	461	21	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+32278	851812	YDR226W	ADK1	AKY1|AKY2|adenylate kinase ADK1|L000000046	559292	Saccharomyces cerevisiae (S288c)	101	7	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+35801	855706	YNL025C	SSN8	CNC1|GIG3|NUT9|RYE2|SRB11|UME3|CycC|L000002796	559292	Saccharomyces cerevisiae (S288c)	526	0	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+36650	856625	YHR215W	PHO12	PHO10|acid phosphatase PHO12|L000001424	559292	Saccharomyces cerevisiae (S288c)	27	0	0	BIOGRID	Phosphatase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+31384	850803	YLR113W	HOG1	SSK3|mitogen-activated protein kinase HOG1|L000000797	559292	Saccharomyces cerevisiae (S288c)	1106	6	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+34885	854700	YIL106W	MOB1	L000003356	559292	Saccharomyces cerevisiae (S288c)	415	8	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+36390	856353	YHL032C	GUT1	glycerol kinase|L000000746	559292	Saccharomyces cerevisiae (S288c)	55	1	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+31623	851076	YLR362W	STE11	mitogen-activated protein kinase kinase kinase STE11|L000002118	559292	Saccharomyces cerevisiae (S288c)	289	9	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+35806	855711	YNL020C	ARK1	serine/threonine protein kinase ARK1|L000004430	559292	Saccharomyces cerevisiae (S288c)	190	7	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31528	850964	YLR260W	LCB5	sphinganine kinase LCB5|L000004329	559292	Saccharomyces cerevisiae (S288c)	231	15	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+36532	856499	YHR099W	TRA1	histone acetyltransferase TRA1|L000003945	559292	Saccharomyces cerevisiae (S288c)	521	12	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+35350	855208	YMR172W	HOT1	L000004957	559292	Saccharomyces cerevisiae (S288c)	117	4	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+35471	855336	YMR291W	TDA1	protein kinase TDA1	559292	Saccharomyces cerevisiae (S288c)	186	27	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+33616	853300	YJL141C	YAK1	serine/threonine protein kinase YAK1|L000002490	559292	Saccharomyces cerevisiae (S288c)	242	19	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+31520	850955	YLR253W	MCP2	-	559292	Saccharomyces cerevisiae (S288c)	92	3	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+33340	852989	YGR097W	ASK10	RGC2|L000002770	559292	Saccharomyces cerevisiae (S288c)	711	33	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+31725	851191	YAL040C	CLN3	DAF1|FUN10|WHI1|cyclin CLN3|L000000359	559292	Saccharomyces cerevisiae (S288c)	462	3	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+33697	853389	YJL057C	IKS1	protein kinase IKS1|L000004209	559292	Saccharomyces cerevisiae (S288c)	159	6	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+32598	852169	YBL105C	PKC1	CLY15|CLY5|CLY7|HPO2|STT1|protein kinase C|L000001446|L000000362|S000029091	559292	Saccharomyces cerevisiae (S288c)	1649	26	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+33971	853688	YKL166C	TPK3	cAMP-dependent protein kinase catalytic subunit TPK3|L000002327	559292	Saccharomyces cerevisiae (S288c)	384	7	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+34948	854769	YIL042C	PKP1	protein kinase PKP1	559292	Saccharomyces cerevisiae (S288c)	89	0	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+34132	853869	YKL001C	MET14	adenylyl-sulfate kinase|L000001086	559292	Saccharomyces cerevisiae (S288c)	91	1	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+34945	854766	YIL045W	PIG2	putative protein phosphatase regulator PIG2|L000001437	559292	Saccharomyces cerevisiae (S288c)	63	11	0	BIOGRID	Phosphatase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+32298	851834	YDR247W	VHS1	putative serine/threonine protein kinase VHS1	559292	Saccharomyces cerevisiae (S288c)	285	8	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+32352	851894	YDR300C	PRO1	glutamate 5-kinase|L000001491	559292	Saccharomyces cerevisiae (S288c)	44	1	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+34940	854761	YIL050W	PCL7	L000004039	559292	Saccharomyces cerevisiae (S288c)	76	11	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+32690	852274	YBL009W	ALK2	protein kinase ALK2	559292	Saccharomyces cerevisiae (S288c)	235	4	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+36002	855922	YPL180W	TCO89	-	559292	Saccharomyces cerevisiae (S288c)	286	49	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+36003	855923	YPL179W	PPQ1	SAL6|L000001797|L000001474	559292	Saccharomyces cerevisiae (S288c)	188	6	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+33297	852943	YGR052W	FMP48	protein kinase FMP48	559292	Saccharomyces cerevisiae (S288c)	135	3	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+32859	852457	YBR160W	CDC28	CDK1|HSL5|SRM5|cyclin-dependent serine/threonine-protein kinase CDC28|L000000267	559292	Saccharomyces cerevisiae (S288c)	2622	10	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+33118	852743	YGL134W	PCL10	L000004042	559292	Saccharomyces cerevisiae (S288c)	70	3	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-
+34488	854257	YOR090C	PTC5	PPP1|type 2C protein phosphatase PTC5	559292	Saccharomyces cerevisiae (S288c)	130	0	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPM	-	-	-	-	-	-
+33456	853117	YGR203W	YCH1	-	559292	Saccharomyces cerevisiae (S288c)	179	2	0	BIOGRID	Phosphatase	-	-	-	-	-	-	DSP	-	-	-	-	-	-
+32269	851802	YDR216W	ADR1	DNA-binding transcription factor ADR1|L000000050	559292	Saccharomyces cerevisiae (S288c)	180	38	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+36419	856382	YHL007C	STE20	mitogen-activated protein kinase kinase kinase kinase STE20|L000002123	559292	Saccharomyces cerevisiae (S288c)	419	64	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+35316	855170	YMR139W	RIM11	GSK3|MDS1|serine/threonine protein kinase RIM11|L000001056	559292	Saccharomyces cerevisiae (S288c)	274	5	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+32509	852065	YDR454C	GUK1	PUR5|guanylate kinase|L000000745	559292	Saccharomyces cerevisiae (S288c)	203	8	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+33594	853274	YJL165C	HAL5	protein kinase HAL5|L000000751	559292	Saccharomyces cerevisiae (S288c)	340	31	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+35771	855674	YNL053W	MSG5	tyrosine/serine/threonine protein phosphatase MSG5|L000001188	559292	Saccharomyces cerevisiae (S288c)	214	8	0	BIOGRID	Phosphatase	-	-	-	-	-	-	DSP	-	-	-	-	-	-
+34019	853744	YKL116C	PRR1	serine/threonine protein kinase PRR1	559292	Saccharomyces cerevisiae (S288c)	216	3	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+33628	853313	YJL128C	PBS2	HOG4|SFS4|SSK4|mitogen-activated protein kinase kinase PBS2|L000001346|L000001874	559292	Saccharomyces cerevisiae (S288c)	924	21	0	BIOGRID	Kinase	-	-	-	-	-	-	STE	-	-	-	-	-	-
+36819	856807	YER075C	PTP3	tyrosine protein phosphatase PTP3|L000003996	559292	Saccharomyces cerevisiae (S288c)	185	20	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PTP	-	-	-	-	-	-
+32730	852316	YBR028C	YPK3	putative protein kinase YPK3	559292	Saccharomyces cerevisiae (S288c)	103	5	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+32048	851558	YDL006W	PTC1	CWH47|KCS2|TPD1|type 2C protein phosphatase PTC1|L000000890|L000001523	559292	Saccharomyces cerevisiae (S288c)	1402	4	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPM	-	-	-	-	-	-
+34010	853733	YKL126W	YPK1	SLI2|serine/threonine protein kinase YPK1|L000002541	559292	Saccharomyces cerevisiae (S288c)	260	33	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+31352	850768	YLR079W	SIC1	SDB25|cyclin-dependent protein serine/threonine kinase inhibiting protein SIC1|L000001886|L000001822	559292	Saccharomyces cerevisiae (S288c)	1166	24	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+33335	852984	YGR092W	DBF2	serine/threonine-protein kinase DBF2|L000000487	559292	Saccharomyces cerevisiae (S288c)	1324	13	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+31692	851153	YLR433C	CNA1	CMP1|calcineurin catalytic subunit A|L000000370	559292	Saccharomyces cerevisiae (S288c)	173	3	0	BIOGRID	Phosphatase	-	-	-	-	-	-	PPP	-	-	-	-	-	-
+32201	851725	YDR147W	EKI1	bifunctional choline kinase/ethanolamine kinase EKI1|L000004610	559292	Saccharomyces cerevisiae (S288c)	114	1	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+33823	853529	YJR066W	TOR1	DRR1|phosphatidylinositol kinase-related protein kinase TOR1|L000002322	559292	Saccharomyces cerevisiae (S288c)	771	7	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+31369	850785	YLR096W	KIN2	serine/threonine protein kinase KIN2|L000000902	559292	Saccharomyces cerevisiae (S288c)	305	31	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+35092	854928	YML112W	CTK3	L000003012	559292	Saccharomyces cerevisiae (S288c)	421	7	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+33010	852622	YGL229C	SAP4	L000003341	559292	Saccharomyces cerevisiae (S288c)	82	2	0	BIOGRID	Phosphatase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+32129	851646	YDR074W	TPS2	HOG2|PFK3|trehalose-phosphatase TPS2|L000002331	559292	Saccharomyces cerevisiae (S288c)	777	23	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+32542	852101	YDR490C	PKH1	serine/threonine protein kinase PKH1|L000004616	559292	Saccharomyces cerevisiae (S288c)	211	17	0	BIOGRID	Kinase	-	-	-	-	-	-	AGC	-	-	-	-	-	-
+35096	854932	YML070W	DAK1	L000004203	559292	Saccharomyces cerevisiae (S288c)	91	14	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+33027	852640	YGL252C	RTG2	L000001784	559292	Saccharomyces cerevisiae (S288c)	656	5	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+34387	854144	YOL016C	CMK2	calmodulin-dependent protein kinase CMK2|L000000367	559292	Saccharomyces cerevisiae (S288c)	161	11	0	BIOGRID	Kinase	-	-	-	-	-	-	CAMK	-	-	-	-	-	-
+35134	854972	YML036W	CGI121	-	559292	Saccharomyces cerevisiae (S288c)	121	0	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+32682	852265	YBL016W	FUS3	DAC2|mitogen-activated serine/threonine-protein kinase FUS3|L000000655	559292	Saccharomyces cerevisiae (S288c)	633	14	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+34997	854822	YIR006C	PAN1	DIM2|MDP3|MIP3|L000001335	559292	Saccharomyces cerevisiae (S288c)	929	48	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+35394	855256	YMR216C	SKY1	serine/threonine protein kinase SKY1|L000003941	559292	Saccharomyces cerevisiae (S288c)	591	28	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+36568	856537	YHR135C	YCK1	CKI2|serine/threonine protein kinase YCK1|L000002500	559292	Saccharomyces cerevisiae (S288c)	580	18	0	BIOGRID	Kinase	-	-	-	-	-	-	CK1	-	-	-	-	-	-
+36272	856221	YPR106W	ISR1	putative protein kinase ISR1|L000004210	559292	Saccharomyces cerevisiae (S288c)	178	4	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31724	851190	YAL041W	CDC24	CLS4|Rho family guanine nucleotide exchange factor CDC24|L000000262	559292	Saccharomyces cerevisiae (S288c)	990	40	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+31831	851312	YDL214C	PRR2	serine/threonine protein kinase PRR2	559292	Saccharomyces cerevisiae (S288c)	88	7	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+31727	851193	YAL038W	CDC19	PYK1|pyruvate kinase CDC19|L000000258	559292	Saccharomyces cerevisiae (S288c)	381	63	0	BIOGRID	Kinase Metabolic/Lipid	-	-	-	-	-	-	-	-	-	-	-	-	-
+33227	852865	YGL019W	CKB1	casein kinase 2 regulatory subunit CKB1|L000002856	559292	Saccharomyces cerevisiae (S288c)	908	11	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	-	-	-	-	-	-	-
+31233	850641	YLL019C	KNS1	serine/threonine protein kinase KNS1|L124|L000000910	559292	Saccharomyces cerevisiae (S288c)	259	18	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+33225	852863	YGL021W	ALK1	protein kinase ALK1|L000002852	559292	Saccharomyces cerevisiae (S288c)	57	41	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+34848	854662	YIL144W	NDC80	HEC1|TID3|L000004311	559292	Saccharomyces cerevisiae (S288c)	527	18	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+33997	853718	YKL139W	CTK1	cyclin-dependent serine/threonine protein kinase CTK1|L000000432	559292	Saccharomyces cerevisiae (S288c)	1178	5	0	BIOGRID	Kinase	-	-	-	-	-	-	CMGC	-	-	-	-	-	-
+36072	855995	YPL109C	YPL109C	-	559292	Saccharomyces cerevisiae (S288c)	238	1	0	BIOGRID	Kinase	-	-	-	-	-	-	ATYPICAL	-	-	-	-	-	-
+31238	850647	YLL013C	PUF3	mRNA-binding protein PUF3	559292	Saccharomyces cerevisiae (S288c)	3222	29	0	BIOGRID	Other	-	-	-	-	-	-	-	-	-	-	-	-	-
+34897	854713	YIL095W	PRK1	PAK1|serine/threonine protein kinase PRK1|L000002879	559292	Saccharomyces cerevisiae (S288c)	267	23	0	BIOGRID	Kinase	-	-	-	-	-	-	-	-	-	-	-	-	-
+33750	853450	YJL006C	CTK2	L000003011	559292	Saccharomyces cerevisiae (S288c)	281	1	0	BIOGRID	Kinase Associated	-	-	-	-	-	-	CYCLIN	-	-	-	-	-	-

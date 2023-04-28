@@ -1,0 +1,10 @@
+# Objective value = 296
+x_START1_MFP1 1
+x_MFP1_MFP2 1
+x_MFP2_MFP3 1
+x_MFP3_END1 1
+y_START1 1
+y_MFP1 1
+y_MFP2 1
+y_MFP3 1
+y_END1 1
