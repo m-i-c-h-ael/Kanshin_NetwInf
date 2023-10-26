@@ -6,7 +6,7 @@ PCST_DIR= function(dir_graph,out_term,in_term,t1,t2,FC_thres,expEvid_cut,prizeTo
   closeAllConnections()
   startTime= Sys.time()
   
-  source(paste('C:/Users/wrtlb/Desktop/20220909_Kanshin_local/20221024_PCST_ILP',
+  source(paste('./20221024_PCST_ILP',
                '20230310_SUBTOUR_ELIM.R',sep='/'))
   
   ############
@@ -63,7 +63,7 @@ PCST_DIR= function(dir_graph,out_term,in_term,t1,t2,FC_thres,expEvid_cut,prizeTo
   }
 #############
 
-  locILP= 'C:/Users/wrtlb/Desktop/20220909_Kanshin_local/20221024_PCST_ILP/' 
+  locILP= './20221024_PCST_ILP/' 
   
   #prepare ILP to create Prize Collecting Steiner Tree
    #undirected graph
@@ -79,7 +79,7 @@ PCST_DIR= function(dir_graph,out_term,in_term,t1,t2,FC_thres,expEvid_cut,prizeTo
     library(pcSteiner)
     library(stringr)
     library(igraph)
-    locILP= 'C:/Users/wrtlb/Desktop/20220909_Kanshin_local/20221024_PCST_ILP/20221209_testing/'
+    locILP= './20221024_PCST_ILP/20221209_testing/'
     source(paste(locILP,'testcases.R',sep=''))
     test_out= testcase_fun()
     g_orig= test_out[[1]]
