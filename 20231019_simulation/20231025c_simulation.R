@@ -13,7 +13,7 @@ set.seed(19102023)
 
 # only for testing: get graphs from testcases
 source('C:/Users/wrtlb/Dropbox/20221006_Kanshin_NetwInf/github/20221024_PCST_ILP/20221209_testing/testcases.R')
-g1= testcase16_dir()[[1]]
+g1= testcase14_dir_multTP()[[1]]  #testcase16_dir()[[1]]
 g1= as.undirected(g1)  #first make undirected, so that then each edge in both directions
 
 #base simulation on underlying network from '20230313_allSignif_STRING1exp_3Xcutoff_TexExDB0.7.tsv'
@@ -30,7 +30,7 @@ g= as.directed(g1, mode='mutual')
 
 #simulation
 TPs= seq(0,60,5)
-meanVmin1_perTP= 2  #poisson lambda-1 of edges significant per TP (I add 1 to each lamda draw, so that at least one vertex is selected)
+meanVmin1_perTP= 2  #poisson lambda-1 of edges significant per TP (I add 1 to each lambda draw, so that at least one vertex is selected)
 meanE_betwTP= 5
 meanE_withinTP= 1
 
@@ -77,7 +77,7 @@ for(j in 2:length(TPs)){
   bothEnds= ends(graph=g_copy, E_currTP, names=FALSE )
 
   
-  #mark edges one at a time, so that not all edgest between sets of vertices are deleted
+  #mark edges one at a time, so that not all edges between sets of vertices are deleted
    #mark them first instead of deleting, so that deletion of one edge doesn`t change the number for the next
   #loop over elements of 'bothEnds'; 'bothEnds' may be empty
   for(i in seq_along(bothEnds[,1])){
@@ -89,7 +89,7 @@ for(j in 2:length(TPs)){
     }
   }
   plot(g_copy, vertex.size=14, vertex.color= V(g_copy)$colr, vertex.label=V(g_copy),
-       edge.arrow.size=.5, main=paste(j-1),layout=lay, edge.color=E(g_copy)$colr, edge.label= E(g_copy))  #, edge.label= E(g_copy)$numName, edge.arrow.width= 0.5, 
+       edge.arrow.size=.5, main=paste(j),layout=lay, edge.color=E(g_copy)$colr, edge.label= E(g_copy))  #, edge.label= E(g_copy)$numName, edge.arrow.width= 0.5, 
   
   g_copy= delete_edges(g_copy, E(g_copy)[E(g_copy)$colr=='red'  ]) #delete all at once, otherwise edge numbers change if deleting one at a time
   

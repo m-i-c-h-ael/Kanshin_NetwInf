@@ -1604,3 +1604,331 @@ Best objective -1.000000000000e+00, best bound -1.000000000000e+00, gap 0.0000%
 
 Wrote result file 'test19_dir_FCNA_PtoC1_maxSt4.sol'
 
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Thu Oct 26 17:21:09 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test13_dir_multTP_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 42 rows, 21 columns, 78 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 42 rows, 21 columns and 78 nonzeros
+Model fingerprint: 0xda02c3fe
+Variable types: 0 continuous, 21 integer (21 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 0.0000000
+Presolve removed 42 rows and 21 columns
+Presolve time: 0.02s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Thu Oct 26 17:21:35 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test13_dir_multTP_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 42 rows, 21 columns, 78 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 42 rows, 21 columns and 78 nonzeros
+Model fingerprint: 0xda02c3fe
+Variable types: 0 continuous, 21 integer (21 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 0.0000000
+Presolve removed 42 rows and 21 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Sat Nov 11 11:50:31 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test13_dir_multTP_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 42 rows, 21 columns, 78 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 42 rows, 21 columns and 78 nonzeros
+Model fingerprint: 0xda02c3fe
+Variable types: 0 continuous, 21 integer (21 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 0.0000000
+Presolve removed 42 rows and 21 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Sat Nov 11 11:53:19 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test13_dir_multTP_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.02 seconds
+: 42 rows, 21 columns, 78 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 42 rows, 21 columns and 78 nonzeros
+Model fingerprint: 0xda02c3fe
+Variable types: 0 continuous, 21 integer (21 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 0.0000000
+Presolve removed 42 rows and 21 columns
+Presolve time: 0.01s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.05 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+
+Wrote result file 'test13_dir_multTP_FCNA_PtoC1_maxSt4.sol'
+
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Wed Nov 15 07:51:32 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test7_dir_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 10 rows, 5 columns, 16 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 10 rows, 5 columns and 16 nonzeros
+Model fingerprint: 0xb5c46060
+Variable types: 0 continuous, 5 integer (5 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [2e+00, 7e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -10.0000000
+Presolve removed 10 rows and 5 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: -10 
+No other solutions better than -10
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -1.000000000000e+01, best bound -1.000000000000e+01, gap 0.0000%
+
+Wrote result file 'test7_dir_FCNA_PtoC1_maxSt4.sol'
+
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Wed Nov 15 08:36:29 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test8_dir_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 10 rows, 5 columns, 16 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 10 rows, 5 columns and 16 nonzeros
+Model fingerprint: 0xb5c46060
+Variable types: 0 continuous, 5 integer (5 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [2e+00, 7e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -10.0000000
+Presolve removed 10 rows and 5 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: -10 
+No other solutions better than -10
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -1.000000000000e+01, best bound -1.000000000000e+01, gap 0.0000%
+
+Wrote result file 'test8_dir_FCNA_PtoC1_maxSt4.sol'
+
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Wed Nov 15 08:47:49 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test8b_dir_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 32 rows, 16 columns, 66 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 32 rows, 16 columns and 66 nonzeros
+Model fingerprint: 0x9820c46e
+Variable types: 0 continuous, 16 integer (16 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 202.0000000
+Found heuristic solution: objective 99.0000000
+Presolve removed 32 rows and 16 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 99 202 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 9.900000000000e+01, best bound 9.900000000000e+01, gap 0.0000%
+
+Wrote result file 'test8b_dir_FCNA_PtoC1_maxSt4.sol'
+
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Wed Nov 15 09:02:05 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test9b_dir_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 30 rows, 15 columns, 51 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 30 rows, 15 columns and 51 nonzeros
+Model fingerprint: 0xdce2edb9
+Variable types: 0 continuous, 15 integer (15 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -15.0000000
+Presolve removed 30 rows and 15 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: -15 
+No other solutions better than -15
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -1.500000000000e+01, best bound -1.500000000000e+01, gap 0.0000%
+
+Wrote result file 'test9b_dir_FCNA_PtoC1_maxSt4.sol'
+
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Wed Nov 15 09:28:35 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test8a_dir_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 26 rows, 13 columns, 52 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 26 rows, 13 columns and 52 nonzeros
+Model fingerprint: 0xd5f1f8c7
+Variable types: 0 continuous, 13 integer (13 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 179.0000000
+Presolve removed 26 rows and 13 columns
+Presolve time: 0.01s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: 81 179 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 8.100000000000e+01, best bound 8.100000000000e+01, gap 0.0000%
+
+Wrote result file 'test8a_dir_FCNA_PtoC1_maxSt4.sol'
+
