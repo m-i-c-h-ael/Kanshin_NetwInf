@@ -4,6 +4,17 @@ graphics.off()
 #dev.off()
 plot.new()
 
+# The purpose of this script is the inference of a candidate signaling network
+ # via a "time-slice approach" from a underlying protein-protein interaction 
+ # network and a phosphoproteomics time course, and subsequent extraction of 
+ # candidate signaling paths.
+# Steps:
+ # Prepare the underlying network and phosphoproteomics data (A - D)
+ # Map phosphoproteomics data onto the PPI network (E)
+ # Generate Steiner Trees on slices of two adjacent timepoints (F)
+ # Combine time slices and divide into subgraphs (G)
+ # Extract paths and plot choronopaths (H, I)
+ # Analyse and evaluate the derived network and paths (J, K)
 
 library(ggpubr)
 library(igraph)
@@ -909,8 +920,8 @@ plot_graph_overTime= function(all_t_graph_l,plotSuffix=plotSuffix,
       ani.record() #record current frame
     }
     oopt= ani.options(interval = 2,loop=1)
-    #saveGIF(ani.replay(),movie.name=paste(plotDir,today,'_netwVideo_',plotSuffix,'.gif',sep='')) #,movie.name = "testVideo.gif",outdir=paste(loc,'plots',sep='')
-    saveGIF(ani.replay(),movie.name=paste(today,'_netwVideo_',plotSuffix,'.gif',sep=''),outdir=plotDir) #,movie.name = "testVideo.gif",outdir=paste(loc,'plots',sep='')
+    saveGIF(ani.replay(),movie.name=paste(plotDir,'NetwVideo_',plotSuffix,'.gif',sep='')) # overwrite existing; movie.name = "testVideo.gif",outdir=paste(loc,'plots',sep='')
+    #saveGIF(ani.replay(),movie.name=paste(today,'_netwVideo_',plotSuffix,'.gif',sep=''),outdir=plotDir) #,movie.name = "testVideo.gif",outdir=paste(loc,'plots',sep='')
     #saveSWF(ani.replay(),movie.name=paste(today,'_netwVideo_',plotSuffix,'.swf',sep=''),outdir=plotDir) #Flash animation
     dev.off()
   }
@@ -954,6 +965,153 @@ make_underlNet= function(edgeDF,sigfDF,maxAbslogDF) {
 }
 ##############################
 
+mark_communities= function(STRING_net, plot_L) {   
+  # function to mark communities in STRING_net and plot them, colored according
+   # to manually defined GO terms
+   # Additionally, analyze within-cluster sum-of-squares and plot
+  #ARGV:
+   # STRING_net (igraph object)
+   # plot_L: list of recorded plots
+  # RETURNS:
+   # STRING_net: with added community membership
+   # plot_L: updated list of recorded plots
+  
+  #cluster_optimal(STRING_net)  #this runs out of memory
+  g_comm= cluster_edge_betweenness(STRING_net)
+  
+  lay_STRING1= layout_with_fr(STRING_net)
+  rescale_mtx= matrix( c(rep(1/20,dim(lay_STRING1)[1]),rep(1/20,dim(lay_STRING1)[1])),ncol=2,byrow = FALSE ) #rescale manually to fit plot
+  lay_STRING1= lay_STRING1*rescale_mtx
+  plot(g_comm,STRING_net,layout= lay_STRING1, vertex.size=3,vertex.label= NA,
+       vertex.color= nodCol,mark.groups = communities(g_comm),rescale=FALSE)
+  STRING_net_comm= STRING_net
+  comm1= V(STRING_net_comm)$name[membership(g_comm)==1]
+  #I didn`t find a good way for GO-analysis in R, so I export and import
+  comm_listList= list()
+  for (l1 in seq_along(1:length(g_comm))){
+    comm_listList[[l1]]= V(STRING_net_comm)$name[membership(g_comm)==l1]
+  }
+  #lapply(comm_listList, write, paste(loc,today,'_communities.txt',sep=''), append=TRUE, ncolumns=1000) #specify columns, otherwise truncated
+  #write.csv(V(STRING_net)$name,paste(loc,today,'_protSTRINGnet.txt',sep='')) #background
+  
+  #comm1DF= cbind.data.frame(name=V(STRING_net_comm)$name,commInd= rep(0,length(V(STRING_net_comm)$name)))
+  #comm1DF$commInd[membership(g_comm)==1]= 1
+  #I select 'Function' and 'Process' at https://yeastgenome.org/goTermFinder at default settings and just choose the term that sounds most representative
+  manuGOterms= c('actin\ncytoskeleton','ribosome/\ntranslation',NA, 'chromatin\norganization',
+                 NA,'signal\ntransduction (I)',NA,'TOR signaling','signal\ntransduction (II)',
+                 'transcription',NA,NA,'cell cycle',NA,'RNA splicing',NA,'proteasomal\ncatabolism',
+                 NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,'vesicle\ntransport',NA,NA)
+  
+  #plot individual communities to find out which one on plot corresponds to which
+  # STRING_net_comm1= subgraph(STRING_net,vids=V(STRING_net)[V(STRING_net_comm)$name %in% communities(g_comm)[[1]]])
+  # lay_STRING_comm1= lay_STRING1[match(V(STRING_net_comm1)$name,V(STRING_net)$name),]
+  newColsUniq= c( 'pink','orange','white','yellow',
+                  'white','blue','white','violet','lightblue',
+                  'darkgreen',rep('white',2),'brown','white','green','white','black',
+                  rep('white',10),'grey',rep('white',2)
+  )
+  newCols= newColsUniq[membership(g_comm)]
+  commInfo= cbind.data.frame(names= g_comm$names, commNo= as.numeric(membership(g_comm)),
+                             commColor= newColsUniq[as.numeric(membership(g_comm))])  #g_comm as global variable
+  
+  V(STRING_net)$comm= membership(g_comm)
+  V(STRING_net)$commCol= newCols   #color according to communities
+  V(STRING_net)$commColWSigf= newCols   #color according to communities with significant nodes in red
+  V(STRING_net)$commColWSigf[STRING_nodes$sigf]='red'
+  #firstSigDF_prot$comm= V(STRING_net)$comm[match(firstSigDF_prot$Gene,V(STRING_net)$name)] #6/2/23 removed again
+  #firstSigDF_prot$commCol= V(STRING_net)$commCol[match(firstSigDF_prot$Gene,V(STRING_net)$name)] #6/2/23 removed again
+  
+  dev.new(width=6,height=6)
+  par(mar=c(0,1,0,0))
+  plot(STRING_net, layout= lay_STRING, vertex.size=3,vertex.label= NA,
+       vertex.color= V(STRING_net)$commColWSigf)
+  text(x=c(-.25, 0.8 , -.77,   -.90,  .23, -.905 ,    .10, -.05,  .8, .71,  .66  ),
+       y=c(  .8, 0.07, 0.22,   -.50, -.78, -.05,     .17, -.39, -.3, .44,  .83),
+       manuGOterms[c(1,2,4,6,8,9,10,13,15,17,28)],
+       col=c('pink','orange','yellow',
+             'blue','violet','lightblue',
+             'darkgreen','brown','green','black',
+             'grey') )
+  #col= newColsUniq[!is.na(manuGOterms)] ) #not using this simpler form, because I like the colors in the code for manual adjustment
+  
+  C1= recordPlot()
+  dev.off()
+  png(paste(plotDir,today,'_commun_STRING_expEvid',expEvid_cut,'.png',sep=''),width=7,height=7,unit='in',res=300)
+  print(C1)
+  dev.off()
+  plot_L= c(plot_L,'C1'=list(C1))
+  
+  dev.new(width=3.5,height=3.5)
+  par(mar=c(1,1,1,1))
+  plot_dendrogram(g_comm,mode="phylo",cex=0.5,use.edge.length=FALSE,
+                  palette=newColsUniq)  #xlim
+  C2= recordPlot()
+  dev.off()
+  png(paste(plotDir,today,'_commDendro_STRING_expEvid',expEvid_cut,'.png',sep=''))
+  print(C2)
+  dev.off()
+  plot_L= c(plot_L,'C2'=list(C2))
+  
+  # Get within-cluster sum of squares as measure for cluster compactness
+  communityWSS=
+    sapply(unique(g_comm$membership), function(memb) {  #for each community..
+      sub_g1= induced.subgraph(STRING_net, V(STRING_net)[g_comm$membership== memb])
+      n= vcount(sub_g1)
+      distMtx= distances(sub_g1,v=V(sub_g1),to=V(sub_g1)) #matrix of pairwise distances
+      totalDist_vec= apply(distMtx,1,sum) #shortest total distance to all other nodes 
+      center_idx= which(totalDist_vec== min(totalDist_vec))[1] #center as node with shortest total distance; choose the first if multiple
+      sum( distMtx[,center_idx]^2 ) /(n-1) #within-cluster-SSQ: squared distance from center normalized by n-1 (I suppose '-1', because distance from center to itself is 0)
+    })
+  
+  dev.new(width=4,height=4)
+  par(mar=c(7,4,1,.6))
+  barplot(communityWSS[!is.na(manuGOterms)],names.arg=manuGOterms[!is.na(manuGOterms)],las=2,
+          ylab='Within-cluster SSQ',col=newColsUniq[!is.na(manuGOterms)],cex.names = .8,lheight=.8) #
+  #title(ylab='Within-cluster SSQ',mgp=c(1,1,7))   #label distance from axis
+  C3= recordPlot()
+  dev.off()
+  png(paste(plotDir,today,'_communDensity_STRING_expEvid',expEvid_cut,'.png',sep=''),
+      width=7,height=7,unit='in',res=300)
+  print(C3)
+  dev.off()
+  plot_L= c(plot_L,'C3'=list(C3))
+  
+  return(list(STRING_net, plot_L))
+}
+##############################
+
+addToTreePlotList= function(redrawTree, treePlot_list){
+  # Function to draw a tree and add it to a list of tree plots
+  # ARGV:
+   # redrawTree (igraph object): tree to be drawn
+   # treePlot_list: list of recorded plots (class: "recordedplot")
+  # RETURNS:
+   # treePlot_list: updated list of recorded plots
+  
+  set.seed(10) 
+  l=layout_with_fr(redrawTree) 
+  dev.new(width=2,height=2)
+  par(mar=c(0,0,0,0))
+  print( plot(redrawTree,vertex.size=24,arrow.width=0.1,vertex.label.cex=.5) ) #,vertex.label.font=2 (bold),main=paste(t1,'to',t2,sep=' ')
+  text(x=-.8,y=1.1,paste(t1,'-',t2,'s',sep=' '),cex=1)
+  box(lwd=1,lty=3)
+  #vertex.shape='rectangle',
+  #vertex.size=(strwidth(V(redrawTree)$name) + strwidth("oo")) * 500,
+  #vertex.size2=strheight("I") * 2 * 100,
+  #main=paste('Steiner Tree at',t1,'to',t2,'s (min. span. tree)')))
+  #main=paste('Steiner Tree at',t1,'to',t2,'s; Subgraph',subgr_idx)) )
+  #https://stackoverflow.com/questions/14472079/match-vertex-size-to-label-size-in-igraph
+  D_curr= recordPlot() 
+  dev.off()
+  png(file=paste(plotDir,today,'_Tree_sG',sG_idx,'_',t1,'_',t2,'_',plotSuffix,'.png',sep=''),width=7,height=7,
+      units='in',res=300)  ###
+  print(D_curr)
+  dev.off()   ###
+  treePlot_list[[t_idx]]= D_curr
+  
+  return(treePlot_list)
+}
+##############################
 plot_timeOrderedSlice= function(slice_graph, t1, t2) {
   # plot graph of time slice with t1-nodes (blue) as network on top,
   # t2-nodes (red) as network on bottom and nodes from intermediate
@@ -1100,9 +1258,12 @@ plotIndivTermPaths= function(terminals, nodeType_paths_list,
   }
 }
 ###########################
+#---------------------------- End of functions ---------------------------------#
 
 plot_LoL= list()  #list with lists for each PC_ans, each containing plots to be arranged
 for (PC_ans_idx in seq_along(PC_ans_vec)){
+  
+  # Continue setup and generation of file names
   PC_ans= PC_ans_vec[PC_ans_idx]
   plot_L= list()
 
@@ -1128,7 +1289,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   
   
   if (testmodeAns== 'n') {
-    # A, Get phosphoproteomics data 
+    # A, Get phosphoproteomics data --------------------------------------------
     #Kanshin, 2015 (5s resolution) data
     data_orig= read.csv(paste(loc,'TabS1_mmc2_mod.csv',sep=''),stringsAsFactors=FALSE)
     data= data_orig
@@ -1150,7 +1311,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     #I assume data2 lists each pSite only once, even though it is a ppep table; here is the proof
     sum(duplicated(paste(data2$ORF,data2$pSite,sep='_')))   # 0 -> i.e. no duplicates in sites
   
-    #You need to calculate max(abs(log3FC)) already for full data, because you need it for prizes also for Steiner nodes
+    #You need to calculate max(abs(logFC)) already for full data, because you need it for prizes also for Steiner nodes
     d2_log2colNos_not0= which(str_detect(colnames(data2),'^log2_') &  ##########
                                colnames(data2)!='log2_T00')
     data2$maxAbslog2FC=
@@ -1164,7 +1325,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     dim(data2_prot)
     summary(data2_prot)
     
-    # B, Extract significant proteins
+    # B, Extract significant proteins ------------------------------------------
     ################## OPTION 1 ####################
     #### DEFINE SIGNIFICANT SITES YOURSELF #########
     #determine significant values (at least ...x change)
@@ -1522,7 +1683,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   
     
   ### Expand network ###
-    #C: Get PPI network
+    #C: Get PPI network --------------------------------------------------------
     #generate STRING network from all changing proteins
     #write.csv(firstSigDF_prot,paste(loc,today,'_allSignif',FC_cutoff,'Xcutoff.csv',sep=''),row.names = FALSE)
      #expand one level: up to 500 proteins: textmining, experiments, databases; high confidence
@@ -1539,7 +1700,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     STRING_allSigf_allEvid[1:3,]
     length(unique(c(STRING_allSigf_allEvid$node1,STRING_allSigf_allEvid$node2))) #allEvid network size: nodes
     
-    # D: Filter by 1, Interaction confidence
+    # D: Filter by 1, Interaction confidence -----------------------------------
     #build network based on 'experimentally_determined_interaction' (physical and
      #genetic interactions; also high-throughput); test using 'database_annotated'
      #(e.g. KEGG, BioCyc) and 'automated_textmining' (titles+abstracts)
@@ -1548,7 +1709,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
       STRING_allSigf_allEvid$experimentally_determined_interaction> expEvid_cut,]   #>0.7: 6092
     dim(STRING_allSigf)
     
-    #E, Map phosphoproteomics to PPI network
+    # E, Map phosphoproteomics to PPI network -----------------------------------
     makeNetw_out= make_underlNet(edgeDF=STRING_allSigf, sigfDF=firstSigDF_prot,
                                maxAbslogDF=data2_prot)
     STRING_net= makeNetw_out[[1]]
@@ -1556,6 +1717,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     STRING_allSigf= makeNetw_out[[3]]
     vertex.attributes(STRING_net)
     
+    # ---------- Analysis of underlying network -------------------------------
     length(V(STRING_net))  #network size (nodes)
     length(E(STRING_net))  #network size (edges)
     par(mar=c(0,0,0,0))
@@ -1574,104 +1736,10 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     dev.off()
     plot_L= c(plot_L,'B1'=list(B1))
     
-    #divide graph into communities
-    #cluster_optimal(STRING_net)  #this runs out of memory
-    g_comm= cluster_edge_betweenness(STRING_net)
-  
-    lay_STRING1= lay_STRING
-    rescale_mtx= matrix( c(rep(1/20,dim(lay_STRING1)[1]),rep(1/20,dim(lay_STRING1)[1])),ncol=2,byrow = FALSE ) #rescale manually to fit plot
-    lay_STRING1= lay_STRING1*rescale_mtx
-    plot(g_comm,STRING_net,layout= lay_STRING1, vertex.size=3,vertex.label= NA,
-         vertex.color= nodCol,mark.groups = communities(g_comm),rescale=FALSE)
-    STRING_net_comm= STRING_net
-    comm1= V(STRING_net_comm)$name[membership(g_comm)==1]
-    #I didn`t find a good way for GO-analysis in R, so I export and import
-    comm_listList= list()
-    for (l1 in seq_along(1:length(g_comm))){
-      comm_listList[[l1]]= V(STRING_net_comm)$name[membership(g_comm)==l1]
-    }
-    #lapply(comm_listList, write, paste(loc,today,'_communities.txt',sep=''), append=TRUE, ncolumns=1000) #specify columns, otherwise truncated
-    #write.csv(V(STRING_net)$name,paste(loc,today,'_protSTRINGnet.txt',sep='')) #background
-    
-    #comm1DF= cbind.data.frame(name=V(STRING_net_comm)$name,commInd= rep(0,length(V(STRING_net_comm)$name)))
-    #comm1DF$commInd[membership(g_comm)==1]= 1
-     #I select 'Function' and 'Process' at https://yeastgenome.org/goTermFinder at default settings and just choose the term that sounds most representative
-    manuGOterms= c('actin\ncytoskeleton','ribosome/\ntranslation',NA, 'chromatin\norganization',
-                   NA,'signal\ntransduction (I)',NA,'TOR signaling','signal\ntransduction (II)',
-                   'transcription',NA,NA,'cell cycle',NA,'RNA splicing',NA,'proteasomal\ncatabolism',
-                   NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,'vesicle\ntransport',NA,NA)
-  
-    #plot individual communities to find out which one on plot corresponds to which
-    # STRING_net_comm1= subgraph(STRING_net,vids=V(STRING_net)[V(STRING_net_comm)$name %in% communities(g_comm)[[1]]])
-    # lay_STRING_comm1= lay_STRING1[match(V(STRING_net_comm1)$name,V(STRING_net)$name),]
-    newColsUniq= c( 'pink','orange','white','yellow',
-                    'white','blue','white','violet','lightblue',
-                    'darkgreen',rep('white',2),'brown','white','green','white','black',
-                    rep('white',10),'grey',rep('white',2)
-                )
-    newCols= newColsUniq[membership(g_comm)]
-    commInfo= cbind.data.frame(names= g_comm$names, commNo= as.numeric(membership(g_comm)),
-                               commColor= newColsUniq[as.numeric(membership(g_comm))])  #g_comm as global variable
-    
-    V(STRING_net)$comm= membership(g_comm)
-    V(STRING_net)$commCol= newCols   #color according to communities
-    V(STRING_net)$commColWSigf= newCols   #color according to communities with significant nodes in red
-    V(STRING_net)$commColWSigf[STRING_nodes$sigf]='red'
-    #firstSigDF_prot$comm= V(STRING_net)$comm[match(firstSigDF_prot$Gene,V(STRING_net)$name)] #6/2/23 removed again
-    #firstSigDF_prot$commCol= V(STRING_net)$commCol[match(firstSigDF_prot$Gene,V(STRING_net)$name)] #6/2/23 removed again
-    
-    dev.new(width=6,height=6)
-    par(mar=c(0,1,0,0))
-    plot(STRING_net, layout= lay_STRING, vertex.size=3,vertex.label= NA,
-         vertex.color= V(STRING_net)$commColWSigf)
-    text(x=c(-.25, 0.8 , -.77,   -.90,  .23, -.905 ,    .10, -.05,  .8, .71,  .66  ),
-         y=c(  .8, 0.07, 0.22,   -.50, -.78, -.05,     .17, -.39, -.3, .44,  .83),
-         manuGOterms[c(1,2,4,6,8,9,10,13,15,17,28)],
-         col=c('pink','orange','yellow',
-               'blue','violet','lightblue',
-               'darkgreen','brown','green','black',
-               'grey') )
-         #col= newColsUniq[!is.na(manuGOterms)] ) #not using this simpler form, because I like the colors in the code for manual adjustment
-    C1= recordPlot()
-    dev.off()
-    png(paste(plotDir,today,'_commun_STRING_expEvid',expEvid_cut,'.png',sep=''),width=7,height=7,unit='in',res=300)
-    print(C1)
-    dev.off()
-    plot_L= c(plot_L,'C1'=list(C1))
-    
-    dev.new(width=3.5,height=3.5)
-    par(mar=c(1,1,1,1))
-    plot_dendrogram(g_comm,mode="phylo",cex=0.5,use.edge.length=FALSE,
-          palette=newColsUniq)  #xlim
-    C2= recordPlot()
-    dev.off()
-    png(paste(plotDir,today,'_commDendro_STRING_expEvid',expEvid_cut,'.png',sep=''))
-    print(C2)
-    dev.off()
-    plot_L= c(plot_L,'C2'=list(C2))
-    
-    # Get within-cluster sum of squares as measure for cluster compactness
-    communityWSS=
-      sapply(unique(g_comm$membership), function(memb) {  #for each community..
-        sub_g1= induced.subgraph(STRING_net, V(STRING_net)[g_comm$membership== memb])
-        n= vcount(sub_g1)
-        distMtx= distances(sub_g1,v=V(sub_g1),to=V(sub_g1)) #matrix of pairwise distances
-        totalDist_vec= apply(distMtx,1,sum) #shortest total distance to all other nodes 
-        center_idx= which(totalDist_vec== min(totalDist_vec))[1] #center as node with shortest total distance; choose the first if multiple
-        sum( distMtx[,center_idx]^2 ) /(n-1) #within-cluster-SSQ: squared distance from center normalized by n-1 (I suppose '-1', because distance from center to itself is 0)
-      })
-  
-    dev.new(width=4,height=4)
-    par(mar=c(7,4,1,.6))
-    barplot(communityWSS[!is.na(manuGOterms)],names.arg=manuGOterms[!is.na(manuGOterms)],las=2,
-            ylab='Within-cluster SSQ',col=newColsUniq[!is.na(manuGOterms)],cex.names = .8,lheight=.8) #
-    #title(ylab='Within-cluster SSQ',mgp=c(1,1,7))   #label distance from axis
-    C3= recordPlot()
-    dev.off()
-    png(paste(plotDir,today,'_communDensity_STRING_expEvid',expEvid_cut,'.png',sep=''),width=7,height=7,unit='in',res=300)
-    print(C3)
-    dev.off()
-    plot_L= c(plot_L,'C3'=list(C3))
+    #divide graph into communities: plot; plot within-cluster-SSQ
+    out = mark_communities(STRING_net, plot_L)
+    STRING_net= out[[1]]
+    plot_L= out[[2]]
     
     #Summarize underlying network
     par(mfrow=c(2,1),mar=c(4,5,1,1))
@@ -1696,6 +1764,8 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     dev.off()
     plot_L= c(plot_L,'B2'=list(B2))
     
+    
+    # (F) For Classical Steiner approach: Find subgraphs of STRING network --------
     if( PC_ans== 'n') {
       subgraph_list1= findSubgraphs(G=STRING_net) 
        #limit to subgraphs of certain size
@@ -1715,8 +1785,9 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     }
     length(V(subgraph(STRING_net,subgraph_list[[1]])))
     
-    #first generate Steiner tree (minimum spanning tree) for each pair two adjacent
-     #time points (do this individually for each subgraph)
+    # F, Steiner Trees on time slices of subgraphs ----------------------------
+      #first generate Steiner tree (minimum spanning tree) for each pair two adjacent
+       #time points (do this individually for each subgraph)
     TPs
     (nodesNotInSTRING= firstSigDF_prot[is.na(match(firstSigDF_prot$Gene,STRING_nodes$name)),]) 
                  #diff. phos proteins not found by STRING
@@ -1764,10 +1835,11 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
                   max_St_betwTerm=max_St_betwSliceTerm,gSol_exist,testmodeAns=testmodeAns)  #'fullCon_visitAll'
         } else if (PC_ans== 'y'){
           gS_out= getSteiner(underlNetw=STRING_net,
-                             subgr=subgraph_list[[sG_idx]],t1,t2,subgr_idx= sG_idx,
-                             design= 'prize_collecting',FC_thres=FC_cutoff,expEvid_cut, prizeToCost,
-                             max_St_betwTerm=max_St_betwSliceTerm,gSol_exist,testmodeAns=testmodeAns)
+                  subgr=subgraph_list[[sG_idx]],t1,t2,subgr_idx= sG_idx,
+                  design= 'prize_collecting',FC_thres=FC_cutoff,expEvid_cut, prizeToCost,
+                  max_St_betwTerm=max_St_betwSliceTerm,gSol_exist,testmodeAns=testmodeAns)
         }
+        
         end_systimeSteiner= Sys.time()
         runtimeSteiner= end_systimeSteiner - start_systimeSteiner
         if(attributes(runtimeSteiner)$units== 'mins'){
@@ -1792,34 +1864,18 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
         allUnalloc= c(allUnalloc,unallocNodes)
     
         redrawTree= tree_out
-        filtGraph_list= list()
+        
         if(length(V(redrawTree))>1){
-          set.seed(10) 
-          l=layout_with_fr(redrawTree) 
-          dev.new(width=2,height=2)
-          par(mar=c(0,0,0,0))
-          print( plot(redrawTree,vertex.size=24,arrow.width=0.1,vertex.label.cex=.5) ) #,vertex.label.font=2 (bold),main=paste(t1,'to',t2,sep=' ')
-          text(x=-.8,y=1.1,paste(t1,'-',t2,'s',sep=' '),cex=1)
-          box(lwd=1,lty=3)
-                      #vertex.shape='rectangle',
-                      #vertex.size=(strwidth(V(redrawTree)$name) + strwidth("oo")) * 500,
-                      #vertex.size2=strheight("I") * 2 * 100,
-                      #main=paste('Steiner Tree at',t1,'to',t2,'s (min. span. tree)')))
-                      #main=paste('Steiner Tree at',t1,'to',t2,'s; Subgraph',subgr_idx)) )
-          #https://stackoverflow.com/questions/14472079/match-vertex-size-to-label-size-in-igraph
-          D_curr= recordPlot() 
-          dev.off()
-          png(file=paste(plotDir,today,'_Tree_sG',sG_idx,'_',t1,'_',t2,'_',plotSuffix,'.png',sep=''),width=7,height=7,
-              units='in',res=300)  ###
-          print(D_curr)
-          dev.off()   ###
-          treePlot_list[[t_idx]]= D_curr
+          # add plot of tree to a collection to eventually plot them in a panel
+          treePlot_list= addToTreePlotList(redrawTree, treePlot_list)
           
           ST_sG_list= findSubgraphs(G=redrawTree)
           
+          # Filter:
           #PCST algorithm contains code to avoid loops below certain size (6), but at some
           #point this becomes computationally too expensive
           #remove subgraphs from solution that do not have at least one in- and one out-terminal
+          filtGraph_list= list()
           for(i in seq_along(ST_sG_list)){
             ST_sG= subgraph(redrawTree,ST_sG_list[[i]])  #subset graph with node indices
             print(plot(ST_sG,vertex.size=10,arrow.width=0.1,main= paste('Subgraph',i)))
@@ -1979,6 +2035,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     Edges_l[[1]]= cbind.data.frame(edge_ends,TP_from,TP_to,sigf_from,sigf_to,type_from,type_to)
     firstSigDF_prot= cbind.data.frame( gene=term_test, 
                      firstSigTP= V(g_test)$t[match(term_test, V(g_test)$name)]  )
+    
     firstSigDF_prot$comm= rep(1, dim(firstSigDF_prot)[1])
     firstSigDF_prot$commCol= rep(NA, dim(firstSigDF_prot)[1])
     STRING_allSigf_allEvid=cbind.data.frame( ends(g_test,es=E(g_test)) )
@@ -2195,7 +2252,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   #color according to communities
   plotSuffix_comm= paste('comm',plotSuffix,sep='_')
   commColor_l= 
-    lapply(compl_pathsN3,function(x){commInfo$commColor[match(x, commInfo$names)]})
+    lapply(compl_pathsN3,function(x){V(STRING_net)$commCol[match(x, V(STRING_net)$name)]})
   chronOUT_comm= chronoPaths( nodePaths_list=compl_pathsN3, TPsPaths_list= compl_pathsTPs3, 
                               typesPaths_list= compl_pathsType3, sigDF=firstSigDF_prot, maxLen= max_pathLenSt,
                               plotmode='combPlot',plotSuffix_comm,altColor_l= commColor_l)
@@ -2671,7 +2728,6 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
 
 plot_LoL[[PC_ans_idx]]= plot_L
 }
-
 
 
 
