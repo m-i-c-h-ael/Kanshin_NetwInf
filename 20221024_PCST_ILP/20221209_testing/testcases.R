@@ -280,7 +280,7 @@ testcase15_dir= function() {
   TPs= c(1,rep(1.5,10),2,rep(1.5,3))
   nodeDF= cbind.data.frame(nodes,TPs)
   colnames(nodeDF)= c('name','t')
-  nodeDF$sigf= c('sig',rep(FALSE,10),TRUE,rep(FALSE,3))
+  nodeDF$sigf= c(TRUE,rep(FALSE,10),TRUE,rep(FALSE,3))
   nodeDF$type= c('out-term',rep('Steiner',10),'in-term',rep('Steiner',3))
   nodeDF$color= c('yellow',rep(NA,10),'orange',rep(NA,3))
   nodeDF$prizes= rep(1,dim(nodeDF)[1])
@@ -349,21 +349,10 @@ testcase17_dir= function() {
   
   out_term= 'a2'
   in_term='d1'
-  V(g)$sigf= rep(FALSE,length(V(g)))
-  V(g)$sigf[match(c(out_term,in_term),V(g)$name)]= TRUE
-  V(g)$prizes= rep(1,length(V(g)))
-  V(g)$type= rep('Steiner',length(V(g)))
-  V(g)$type[V(g)$name==in_term]= 'in-term'
-  V(g)$type[V(g)$name==out_term]= 'out-term'
-  V(g)$t= rep(15,length(V(g)))
-  V(g)$t[V(g)$type=='out-term']=10
-  V(g)$t[V(g)$type=='in-term']=20
-  V(g)$color= rep(NA,length(V(g)))
-  V(g)$color[V(g)$type=='out-term']='yellow'
-  V(g)$color[V(g)$type=='in-term']='orange'
-  E(g)$costs= rep(1,length(E(g)))
+  g = assign_attrib(g, in_term, out_term)
   E(g)$costs[c(21,26)]=0.9  #avoid ties between equivalent graphs
   
+  par(mar = c(0, 0, 0, 0))
   plot(g)
   
   return(list(g,out_term,in_term))
@@ -387,7 +376,7 @@ testcase18_dir= function() {
   
   out_term= c('a2','b2')
   in_term= c('d1','i')
-  g= assign_attrib(g)
+  g= assign_attrib(g, in_term, out_term)
   E(g)$costs[c(21,26)]=0.9  #avoid ties between equivalent graphs
   
   par(mar=c(0,0,0,0))
@@ -411,19 +400,7 @@ testcase19_dir= function() {
   
   out_term= c('A','B')
   in_term= 'C'
-  V(g)$sigf= rep(FALSE,length(V(g)))
-  V(g)$sigf[match(c(out_term,in_term),V(g)$name)]= TRUE
-  V(g)$prizes= rep(1,length(V(g)))
-  V(g)$type= rep('Steiner',length(V(g)))
-  V(g)$type[V(g)$name %in% in_term]= 'in-term'
-  V(g)$type[V(g)$name %in% out_term]= 'out-term'
-  V(g)$t= rep(15,length(V(g)))
-  V(g)$t[V(g)$type=='out-term']=10
-  V(g)$t[V(g)$type=='in-term']=20
-  V(g)$color= rep(NA,length(V(g)))
-  V(g)$color[V(g)$type=='out-term']='yellow'
-  V(g)$color[V(g)$type=='in-term']='orange'
-  E(g)$costs= rep(1,length(E(g)))
+  g= assign_attrib(g, in_term, out_term)
   
   plot(g)
   

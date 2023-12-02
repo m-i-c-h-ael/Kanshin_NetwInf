@@ -91,13 +91,16 @@ PCST_DIR= function(dir_graph,out_term,in_term,t1,t2,FC_thres,expEvid_cut,prizeTo
     prizeToCost=1
     gSol_exist='n'
     FC_thres= NA
-  } else if (testmodeAns== 'n') {
+  } else if (testmodeAns== 'n' | testmodeAns == 'simul') {
     ###
     #if not using testcases
     g_orig= dir_graph
     out_term_orig= out_term
     in_term_orig= in_term
     ###
+    if(testmodeAns == 'simul'){
+      locILP= './20221024_PCST_ILP/simul/'
+    }
   }
   
   V(g_orig)$color= rep(NA,length(V(g_orig)))
@@ -225,6 +228,9 @@ PCST_DIR= function(dir_graph,out_term,in_term,t1,t2,FC_thres,expEvid_cut,prizeTo
              '_maxSt',max_St_betwTerm,'_',t1,'_',t2,'.lp',sep='')
   } else if (testmodeAns== 'y'){
     out= paste(locILP,'test',testString,'_FC',FC_thres,'_PtoC',prizeToCost,
+               '_maxSt',max_St_betwTerm,'.lp',sep='')
+  } else if (testmodeAns== 'simul'){
+    out= paste(locILP,'simul_FC',FC_thres,'_PtoC',prizeToCost,
                '_maxSt',max_St_betwTerm,'.lp',sep='')
   }
   sink(out)

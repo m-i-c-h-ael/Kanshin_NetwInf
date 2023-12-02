@@ -1932,3 +1932,117 @@ Best objective 8.100000000000e+01, best bound 8.100000000000e+01, gap 0.0000%
 
 Wrote result file 'test8a_dir_FCNA_PtoC1_maxSt4.sol'
 
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Wed Nov 22 10:40:35 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test15_dir_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 18 rows, 9 columns, 32 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 18 rows, 9 columns and 32 nonzeros
+Model fingerprint: 0x5a15c21e
+Variable types: 0 continuous, 9 integer (9 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 296.0000000
+Presolve removed 18 rows and 9 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 1: 296 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.960000000000e+02, best bound 2.960000000000e+02, gap 0.0000%
+
+Wrote result file 'test15_dir_FCNA_PtoC1_maxSt4.sol'
+
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Wed Nov 22 11:03:19 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test16_dir_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 36 rows, 18 columns, 74 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 36 rows, 18 columns and 74 nonzeros
+Model fingerprint: 0x502df104
+Variable types: 0 continuous, 18 integer (18 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -72.0000000
+Presolve removed 36 rows and 18 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 2: -73 -72 
+No other solutions better than -73
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -7.300000000000e+01, best bound -7.300000000000e+01, gap 0.0000%
+
+Wrote result file 'test16_dir_FCNA_PtoC1_maxSt4.sol'
+
+
+Gurobi 9.5.2 (win64, gurobi_cl) logging started Wed Nov 22 11:08:33 2023
+
+Set parameter Username
+Set parameter LogFile to value "gurobi.log"
+Using license file C:\Users\wrtlb\gurobi.lic
+
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Copyright (c) 2022, Gurobi Optimization, LLC
+
+Read LP format model from file test17_dir_FCNA_PtoC1_maxSt4.lp
+Reading time = 0.00 seconds
+: 48 rows, 24 columns, 102 nonzeros
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 48 rows, 24 columns and 102 nonzeros
+Model fingerprint: 0xa0a41db5
+Variable types: 0 continuous, 24 integer (24 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [9e-01, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 1.8000000
+Found heuristic solution: objective -1.1000000
+Presolve removed 48 rows and 24 columns
+Presolve time: 0.02s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.00 work units)
+Thread count was 1 (of 8 available processors)
+
+Solution count 3: -1.2 -1.1 1.8 
+No other solutions better than -1.2
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -1.200000000000e+00, best bound -1.200000000000e+00, gap 0.0000%
+
+Wrote result file 'test17_dir_FCNA_PtoC1_maxSt4.sol'
+

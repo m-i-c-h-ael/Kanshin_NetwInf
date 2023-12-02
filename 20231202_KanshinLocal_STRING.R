@@ -31,21 +31,36 @@ source(paste('./20221024_PCST_ILP','20230327_PCST_ILP_DIR_FUN.R',sep='/'))
 source(paste('./20221024_PCST_ILP/20221209_testing/testcases.R',sep=''))
 source(paste('.','20230128_SteinerNet_mod.R',sep='/'))
 
-testmodeAns= readline("Should I run in testmode (y/n)?:")
+loc= './'
+
+testmodeAns= readline("Should I run in testmode (y/n/simul)?:")
 
 if(testmodeAns=='n'){
   #PC_ans= readline("Prize Collecting (y/n)?:")
   PC_ans_vec= c('n','y')
-} else {   # Testmode is always Prize Collecting
+  # Phosphoproteomics data
+  # Kanshin, 2015 (5s resolution) data:
+  data_orig= read.csv(paste(loc,'TabS1_mmc2_mod.csv',sep=''),stringsAsFactors=FALSE)
+} else if (testmodeAns == 'y') {   # Testmode is always Prize Collecting
   #PC_ans= 'y'
   PC_ans_vec= 'y'
+} else if (testmodeAns == 'simul'){
+  PC_ans_vec= c('n','y')
+  # Simulation data
+  simulFile = readline("Give name of simulated phosphoproteomics dataset:")
+  simulFile_base = str_replace(simulFile, '.csv', '')
+  data_orig= read.csv(paste(loc,'20231019_simulation/',simulFile,sep=''),
+                      stringsAsFactors=FALSE)
 }
+#data_orig contains column "Gene", "ORF" and "pSite" with gene name; columns with "log2FC_..." (16-28), 
+#and with "log10int_..." (55-67)
+data_orig$Gene= stringr::str_to_title(data_orig$Gene)
 
 if (testmodeAns== 'y'){
-  testcase_fun= testcase9c_dir  ########### modify
-  testString= '9c_dir'        ########### modify
+  testcase_fun= testcase19_dir  ########### modify
+  testString= '19_dir'        ########### modify
   gSol_exist= 'y'
-} else if (testmodeAns== 'n') {
+} else if (testmodeAns== 'n' | testmodeAns == 'simul') {
   gSol_exist= readline('In case of PCST: Do Gurobi solutions already exist (y/n)?:')
 } else {
   stop("Incorrect testmode answer!")
@@ -57,8 +72,6 @@ if (gSol_exist != 'y' & gSol_exist != 'n') {
 options(warnPartialMatchArgs=FALSE) #prevent 'partial argument match' warnings in
 #igraph plotting
 options(warnPartialMatchDollar = TRUE) #https://stackoverflow.com/questions/43876289/selecting-non-existent-columns-in-data-table
-
-loc= './'
 
 TP_interval= 5
 TPs= seq(5,60,TP_interval)
@@ -74,6 +87,7 @@ max_pathLenSt= 10  ########### max. considered depth in extracting paths
 #(2 matches the 1-node expansion from signif. prot. in STRING)
 max_St_betwSliceTerm_class= 2 #for classical Steiner tree
 max_St_betwSliceTerm_PCST= 2 #for PCST; #5 is too slow for real data
+  # in testmode, max_St_betwSliceTerm is set ~line 2017
 
 today= Sys.Date()
 today=gsub("-","",today)
@@ -804,7 +818,7 @@ plot_graph_overTime= function(all_t_graph_l,plotSuffix=plotSuffix,
                            rep(plot_WH/maxPlotDim,dim(l_orig)[1])),ncol=2,byrow = FALSE )
     l_resc= l_orig*rescale_mtx
     
-    if (PC_ans== 'y' & testmodeAns=='n'){
+    if (PC_ans== 'y' & testmodeAns=='n'){   # TODO: any shift necessary if simulation
       l= l_resc
       l[,1]= l[,1]-0.1  #shift in x-direction
       l[,2]= l[,2]-0.2  #shift in y-direction
@@ -920,8 +934,8 @@ plot_graph_overTime= function(all_t_graph_l,plotSuffix=plotSuffix,
       ani.record() #record current frame
     }
     oopt= ani.options(interval = 2,loop=1)
-    saveGIF(ani.replay(),movie.name=paste(plotDir,'NetwVideo_',plotSuffix,'.gif',sep='')) # overwrite existing; movie.name = "testVideo.gif",outdir=paste(loc,'plots',sep='')
-    #saveGIF(ani.replay(),movie.name=paste(today,'_netwVideo_',plotSuffix,'.gif',sep=''),outdir=plotDir) #,movie.name = "testVideo.gif",outdir=paste(loc,'plots',sep='')
+    #saveGIF(ani.replay(),movie.name=paste(today,'NetwVideo_',plotSuffix,'.gif',sep='')) # movie.name = "testVideo.gif",outdir=paste(loc,'plots',sep='')
+    saveGIF(ani.replay(),movie.name=paste(today,'_netwVideo_',plotSuffix,'.gif',sep=''),outdir=plotDir) #,movie.name = "testVideo.gif",outdir=paste(loc,'plots',sep='')
     #saveSWF(ani.replay(),movie.name=paste(today,'_netwVideo_',plotSuffix,'.swf',sep=''),outdir=plotDir) #Flash animation
     dev.off()
   }
@@ -929,9 +943,10 @@ plot_graph_overTime= function(all_t_graph_l,plotSuffix=plotSuffix,
 }
 #######################
 
-make_underlNet= function(edgeDF,sigfDF,maxAbslogDF) {
+make_underlNet= function(edgeDF, sigfDF, maxAbslogDF) {
   #function to produce undirected network from edge DF, significance and log2FC information
   #adds sigf, TP_node1, TP_node2, prizes
+  # ARGS:
   #edgeDF needs columns 'node1' and 'node2'
   #sigfDF needs columns 'Gene' and 'firstSigTP'
   #maxAbslogDF needs columns 'Gene' and 'maxAbslog3FC'
@@ -1112,6 +1127,7 @@ addToTreePlotList= function(redrawTree, treePlot_list){
   return(treePlot_list)
 }
 ##############################
+
 plot_timeOrderedSlice= function(slice_graph, t1, t2) {
   # plot graph of time slice with t1-nodes (blue) as network on top,
   # t2-nodes (red) as network on bottom and nodes from intermediate
@@ -1279,6 +1295,8 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     plotSuffix= paste('test',testString,'_',sep='')
   } else if (testmodeAns=='n'){
     plotSuffix= paste('FC',FC_cutoff,'_',sep='')
+  } else if (testmodeAns == 'simul'){
+    plotSuffix= paste('simul_FC',FC_cutoff,'_',sep='')
   }
   if (PC_ans== 'n'){
     plotSuffix= paste(plotSuffix,'classSteiner_maxTree',max_St_betwSliceTerm_class,sep='')
@@ -1288,13 +1306,16 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   plotSuffix= paste(plotSuffix,'_maxPath',max_pathLenSt,sep='')
   
   
-  if (testmodeAns== 'n') {
-    # A, Get phosphoproteomics data --------------------------------------------
-    #Kanshin, 2015 (5s resolution) data
-    data_orig= read.csv(paste(loc,'TabS1_mmc2_mod.csv',sep=''),stringsAsFactors=FALSE)
-    data= data_orig
-    data$Gene= stringr::str_to_title(data$Gene)
-    data2= cbind.data.frame(data[,c(1:8,11,16:28,55:67)])
+  if (testmodeAns== 'n' | testmodeAns == 'simul') {
+    
+    # A, Process phosphoproteomics data --------------------------------------------
+    data2= cbind.data.frame(data_orig[,
+                                 c(1:8,
+                                   which(colnames(data_orig) == 'Gene'),
+                                   which(str_detect(colnames(data_orig), '^log2_')),
+                                   which(str_detect(colnames(data_orig), '^log10int_'))
+                                   )
+                                 ])
     data2[1:2,]
   
     data2
@@ -1329,10 +1350,10 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     ################## OPTION 1 ####################
     #### DEFINE SIGNIFICANT SITES YOURSELF #########
     #determine significant values (at least ...x change)
-    data_signif= data2[,11:22]> log(FC_cutoff,2) | data2[,11:22] < log(1/FC_cutoff,2)   #don`t consider changes at t=0
+    data_signif= data2[, d2_log2colNos_not0]> log(FC_cutoff,2) | 
+                 data2[, d2_log2colNos_not0] < log(1/FC_cutoff,2)   #don`t consider changes at t=0
     colnames(data_signif)= str_replace(colnames(data_signif),"log2_","sigf_")
     sigfIndDF= cbind.data.frame(Gene= data2$Gene,ORF=data2$ORF,pSite= data2$pSite,data_signif)
-    data1= cbind.data.frame(data2,data_signif)
   
     #find for each site the first timepoint at which it is significant
     firstSigfIdx= apply(as.matrix(sigfIndDF[,4:dim(sigfIndDF)[2]]),1,
@@ -1345,29 +1366,47 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     firstSigDF_sites= sigfIndDF[!is.na(sigfIndDF$firstSigTP),]
     firstSigDF_sites= firstSigDF_sites[firstSigDF_sites$firstSigTP!=0,]
     dim(firstSigDF_sites) #number of sigf. sites (before collapsing on proteins)
-    firstSigDF_sites[,c(1,2,16)]
+    firstSigDF_sites[,c("Gene","ORF","firstSigTP")]
   
     abs_log2_colNos= which(str_detect(colnames(firstSigDF_sites),'abs_log2_T[0-9]+$'))
     abs_log2_0subs= firstSigDF_sites[,abs_log2_colNos]
     abs_log2_0subs[is.na(abs_log2_0subs)]= 0
     firstSigDF_sites_0subs= cbind.data.frame( firstSigDF_sites[,1:(min(abs_log2_colNos)-1)],abs_log2_0subs)
   
-    firstSigDF_prot0= data.frame( firstSigDF_sites_0subs %>%   #this approach is a bit dangerous, as you may end up with intensities from diff sites
-                                    group_by(Gene,ORF) %>%
-                                    summarise(firstSigTP= min(firstSigTP,na.rm=TRUE),
-      abs_log2_T00= max(abs_log2_T00,na.rm=TRUE),abs_log2_T05= max(abs_log2_T05,na.rm=TRUE),
-      abs_log2_T10= max(abs_log2_T10,na.rm=TRUE),abs_log2_T15= max(abs_log2_T15,na.rm=TRUE),
-      abs_log2_T20= max(abs_log2_T20,na.rm=TRUE),abs_log2_T25= max(abs_log2_T25,na.rm=TRUE),
-      abs_log2_T30= max(abs_log2_T30,na.rm=TRUE),abs_log2_T35= max(abs_log2_T35,na.rm=TRUE),
-      abs_log2_T40= max(abs_log2_T40,na.rm=TRUE),abs_log2_T45= max(abs_log2_T45,na.rm=TRUE),
-      abs_log2_T50= max(abs_log2_T50,na.rm=TRUE),abs_log2_T55= max(abs_log2_T55,na.rm=TRUE),
-      abs_log2_T60= max(abs_log2_T60,na.rm=TRUE) ) )  #finds MSN2; no NA in Gene**
+    firstSigDF_prot0= data.frame( firstSigDF_sites_0subs %>%
+      # note that this approach may use log2-ratios from different sites across samples
+          group_by(Gene,ORF) %>%
+          summarise(
+            firstSigTP= min(firstSigTP,na.rm=TRUE),
+            across(starts_with("abs_log2_T"), \(x) max(x, na.rm = TRUE)) 
+          )
+    )
+    
+    #~~~~ checkpoint ~~~#
+    chck = 0
+    while(chck != 1)
+      if( sum(firstSigDF_prot0$Gene == 'Msn2') == 1){
+        chck = 1
+      } else {
+        chck= readline("Incorrect count of Msn2 among signif. proteins.
+                        Press '1' to acknowledge?")
+      }
+    #~~~~~~~~~~~~~~~~~~~#
+    
     firstSigDF_protA= firstSigDF_prot0[!is.na(firstSigDF_prot0$firstSigTP),]
     firstSigDF_protA= firstSigDF_protA[firstSigDF_protA$firstSigTP != 0,] #don`t use sites changing before salt addition
     dim(firstSigDF_protA) #number of significant proteins
     firstSigDF_protA[1:4,]
     dim(firstSigDF_protA)[1]   ## Number of signif. diff. phos. proteins
-    #write.csv(firstSigDF_protA,paste(loc,today,'_allSignif',FC_cutoff,'Xcutoff.csv',sep=''),row.names = FALSE)
+    # if(testmodeAns == 'simul'){
+      # write.csv(firstSigDF_protA,
+      #           paste(loc, '20231019_simulation/', today, '_', simulFile_base, 
+      #                 '_allSignif', FC_cutoff, 'Xcutoff.csv', sep=''), 
+      #           row.names = FALSE)
+    # } else if (testmodeAns == 'n'){
+    #   write.csv(firstSigDF_protA,
+    #   paste(loc,today,'_allSignif',FC_cutoff,'Xcutoff.csv',sep=''),
+    #   row.names = FALSE)}
     #######################################
     #######################################
     
@@ -1461,11 +1500,17 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
      #use exp.evid., DB, textmining; minimum total score of 'expEvid_cut'
   
     #STRING was searched with ORFs and may have replaced some gene names
+    if (testmodeAns == 'n'){
     STRING_1shell= read.table(paste(loc,'20230313_allSignif_STRING1exp_',FC_cutoff,
                                     'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),sep='\t',
                               header=TRUE, stringsAsFactors = FALSE)
     # STRING_1shell= read.table(paste(loc,'20230228_STRING_Kanshin_fromS2_1shell_texExDB_0.7.tsv',sep=''),sep='\t',
     #                           header=TRUE, stringsAsFactors = FALSE)
+    } else if (testmodeAns == 'simul'){
+      STRING_1shell= read.table(paste(loc,'20231019_simulation/', simulFile_base,
+        '_STRING1exp_', FC_cutoff,'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),
+                sep='\t', header=TRUE, stringsAsFactors = FALSE)
+    }
        #use the maximally expanded STRING network I am going to use in this analysis
     
     #convert from gene names to protein names
@@ -1493,9 +1538,17 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     ###########################################
     ######## ANALYSIS of the unexpanded network
     load_intConfcut= 0.7 #cutoff for file to load
-    STRunexpand_allEvid= read.table(paste(loc,'20230313_allSignif_STRINGunexp_',FC_cutoff,
-                                          'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),sep='\t',
+    if(testmodeAns == 'n'){
+      STRunexpand_allEvid= read.table(
+        paste(loc,'20230313_allSignif_STRINGunexp_',FC_cutoff,
+              'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),sep='\t',
                                     header=TRUE, stringsAsFactors = FALSE)
+    } else if (testmodeAns == 'simul'){
+      STRunexpand_allEvid= read.table(
+        paste(loc,'20231019_simulation/', simulFile_base,
+        '_STRING1exp_', FC_cutoff,'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),
+                         sep='\t', header=TRUE, stringsAsFactors = FALSE)
+    }
     #convert from gene names to protein names
     STRunexpand_allEvid$node1= sapply(STRunexpand_allEvid$node1,str_to_title)
     STRunexpand_allEvid$node2= sapply(STRunexpand_allEvid$node2,str_to_title)
@@ -1516,7 +1569,8 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     head(STRunexpand)
     
     # convert to graph (mainly for compatibility with analysis of expanded network)
-    unexNet_out= make_underlNet(edgeDF=STRunexpand,sigfDF=firstSigDF_prot,maxAbslogDF=data2_prot)
+    unexNet_out = make_underlNet(edgeDF = STRunexpand, sigfDF = firstSigDF_prot,
+                                maxAbslogDF = data2_prot)
     STRunexpand_net= unexNet_out[[1]]
     STRINGunexpand_nodes= unexNet_out[[2]]
     STRunexpand_new= unexNet_out[[3]]
@@ -2183,7 +2237,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   length(allNodes[is.na(match(allNodes,duplNodes))]) #nodes only occurring once
   
   ## COUNT where losses occurred
-  if(testmodeAns== 'n') {  #only if not in testmode
+  if(testmodeAns== 'n' | testmodeAns == 'simul') {  #only if not in testmode
     noSigfProt= dim(firstSigDF_protA)[1]  #how many significant proteins originally
     #noInSTRING= dim(firstSigDF_prot)[1] #in STRING DB; this is not useful, because STRING output is already filtered
     firstSigDF_prot$Gene [firstSigDF_prot$Gene %in% 
@@ -2349,7 +2403,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
                                      V(all_t_graph_sG1_N3)$type=='out-term'],breaks=70,col=rgb(0,0,1,0.25),alpha=0.5,add=TRUE)
 
   #correlate betweenness in current network with betweenness in underlying network for current nodes
-  if(testmodeAns== 'n'){
+  if(testmodeAns== 'n' | testmodeAns == 'simul'){
     corresp_btwns_underl= btwns_underl[match(V(all_t_graph_sG1_N3)$name, V(STRING_net)$name)]
   } else if (testmodeAns== 'y') {
     corresp_btwns_underl= btwns_underl[match(V(all_t_graph_sG1_N3)$name, V(g_test)$name)]
@@ -2734,11 +2788,12 @@ plot_LoL[[PC_ans_idx]]= plot_L
 ######## ARRANGED PLOTS ##########
 plot_LoL
 
-A1= plot_LoL[[1]][['A1']]
-A2= plot_LoL[[1]][['A2']]
+A1 = plot_LoL[[1]][['A1']]
+A2 = plot_LoL[[1]][['A2']]
 #png(paste(loc,'plots/',today,'_FigA.png',sep=''),width=5,height=20,units='in',res=500)
-pdf(paste(loc,'plots/','FigA.pdf',sep=''),width=5,height=20)
-ggpubr::ggarrange(A1,A2,nrow=2,ncol=1,labels=c('A','B'),widths=3.5,heights=c(3.5,10.5))
+pdf(paste(loc,'plots/','FigA.pdf',sep = ''), width = 5, height = 20)
+ggpubr::ggarrange(A1, A2, nrow = 2, ncol = 1, labels = c('A','B'),
+                  widths = 3.5, heights = c(3.5,10.5))
 dev.off()
 
 # losses figure (largely manual)
