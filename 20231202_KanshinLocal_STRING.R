@@ -33,38 +33,39 @@ source(paste('.','20230128_SteinerNet_mod.R',sep='/'))
 
 loc= './'
 
-testmodeAns= readline("Should I run in testmode (y/n/simul)?:")
+testmodeAns= readline("Should I run in testmode (y/n)?:")
 
-if(testmodeAns=='n'){
-  #PC_ans= readline("Prize Collecting (y/n)?:")
+if(testmodeAns == 'n'){
+  simulAns = readline('Use simulated data? (y/n):')
+  gSol_exist= readline('In case of PCST: Do Gurobi solutions already exist (y/n)?:')
+  if(simulAns == 'n'){
+    # Phosphoproteomics data
+    # Kanshin, 2015 (5s resolution) data:
+    TCfile = './TabS1_mmc2_mod.csv'  #include location
+  } else if (simulAns == 'y'){
+    TCfile = readline("Give location/name of simulated phosphoproteomics dataset:\n")
+  } else {
+    stop('Incorrect simulation answer!')
+  }
   PC_ans_vec= c('n','y')
-  # Phosphoproteomics data
-  # Kanshin, 2015 (5s resolution) data:
-  data_orig= read.csv(paste(loc,'TabS1_mmc2_mod.csv',sep=''),stringsAsFactors=FALSE)
-} else if (testmodeAns == 'y') {   # Testmode is always Prize Collecting
-  #PC_ans= 'y'
+  TCfile_split = strsplit(TCfile,'\\/|\\\\')[[1]]
+  TCfile_loc = paste(
+    paste(TCfile_split[1:length(TCfile_split)-1], collapse = '/'),
+    '/', sep = '')
+  TCfile_base = str_replace((tail(str_split(TCfile,'/')[[1]], n = 1)), '.csv', '')
+  data_orig= read.csv(TCfile, stringsAsFactors=FALSE)
+  #data_orig contains column "Gene", "ORF" and "pSite" with gene name; columns with "log2FC_..." (16-28), 
+  #and with "log10int_..." (55-67)
+  data_orig$Gene= stringr::str_to_title(data_orig$Gene)
+} else if (testmodeAns== 'y'){
   PC_ans_vec= 'y'
-} else if (testmodeAns == 'simul'){
-  PC_ans_vec= c('n','y')
-  # Simulation data
-  simulFile = readline("Give name of simulated phosphoproteomics dataset:")
-  simulFile_base = str_replace(simulFile, '.csv', '')
-  data_orig= read.csv(paste(loc,'20231019_simulation/',simulFile,sep=''),
-                      stringsAsFactors=FALSE)
-}
-#data_orig contains column "Gene", "ORF" and "pSite" with gene name; columns with "log2FC_..." (16-28), 
-#and with "log10int_..." (55-67)
-data_orig$Gene= stringr::str_to_title(data_orig$Gene)
-
-if (testmodeAns== 'y'){
   testcase_fun= testcase19_dir  ########### modify
   testString= '19_dir'        ########### modify
   gSol_exist= 'y'
-} else if (testmodeAns== 'n' | testmodeAns == 'simul') {
-  gSol_exist= readline('In case of PCST: Do Gurobi solutions already exist (y/n)?:')
 } else {
   stop("Incorrect testmode answer!")
 }
+
 if (gSol_exist != 'y' & gSol_exist != 'n') {
   stop("Incorrect Gurobi-answer!")
 }
@@ -191,7 +192,8 @@ getSteiner= function(underlNetw,subgr,t1,t2,subgr_idx,design,
   if (length(curr_terminals) <= 1) {  # >1 protein required for tree
     print(paste("No/Single node in subgraph",subgr_idx,':',curr_terminals))
     curr_tree0= make_empty_graph(n=0, directed=TRUE)
-    return(list(curr_tree0,unallocNodes= cbind.data.frame(curr_terminals,curr_terminals_t)),noTermIn,0)
+    unallocNodes= cbind.data.frame(curr_terminals,curr_terminals_t)
+    return(list(curr_tree0, unallocNodes, noTermIn, 0))
   } else {
     if(design != 'prize_collecting') {
       print(paste('Calculating Classical Steiner Tree for ',t1,' - ',t2,' (',length(curr_terminals),' terminals) ...',sep=''))
@@ -244,7 +246,8 @@ getSteiner= function(underlNetw,subgr,t1,t2,subgr_idx,design,
       curr_tree= PCST_OUT[[1]]
       print(paste('Runtime',PCST_OUT[[2]],'min',sep=' '))
       if(length(V(curr_tree))==0) {
-        return(list(curr_tree,unallocNodes= cbind.data.frame(curr_terminals,curr_terminals_t),noTermIn,0))
+        unallocNodes= cbind.data.frame(curr_terminals,curr_terminals_t)
+        return(list(curr_tree, unallocNodes, noTermIn, 0))
       }
     } #end of design== 'prize-collecting'
     
@@ -1306,16 +1309,19 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   plotSuffix= paste(plotSuffix,'_maxPath',max_pathLenSt,sep='')
   
   
-  if (testmodeAns== 'n' | testmodeAns == 'simul') {
+  if (testmodeAns== 'n') {
     
     # A, Process phosphoproteomics data --------------------------------------------
-    data2= cbind.data.frame(data_orig[,
-                                 c(1:8,
-                                   which(colnames(data_orig) == 'Gene'),
-                                   which(str_detect(colnames(data_orig), '^log2_')),
-                                   which(str_detect(colnames(data_orig), '^log10int_'))
-                                   )
-                                 ])
+    colIdxToSelect= c(which(colnames(data_orig) == 'Gene'),
+                      which(colnames(data_orig) == 'ORF'),
+                      which(colnames(data_orig) == 'pSite'),
+                      which(str_detect(colnames(data_orig), '^log2_')),
+                      which(str_detect(colnames(data_orig), '^log10int_'))
+    )
+    if(any(is.na(colIdxToSelect))){
+      stop("Error: Expected columns missing in phosphoproteomics data file!")
+    }
+    data2= cbind.data.frame(data_orig[, colIdxToSelect])
     data2[1:2,]
   
     data2
@@ -1384,13 +1390,14 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     
     #~~~~ checkpoint ~~~#
     chck = 0
-    while(chck != 1)
+    while(chck != 1){
       if( sum(firstSigDF_prot0$Gene == 'Msn2') == 1){
         chck = 1
       } else {
         chck= readline("Incorrect count of Msn2 among signif. proteins.
                         Press '1' to acknowledge?")
       }
+    }
     #~~~~~~~~~~~~~~~~~~~#
     
     firstSigDF_protA= firstSigDF_prot0[!is.na(firstSigDF_prot0$firstSigTP),]
@@ -1398,15 +1405,16 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     dim(firstSigDF_protA) #number of significant proteins
     firstSigDF_protA[1:4,]
     dim(firstSigDF_protA)[1]   ## Number of signif. diff. phos. proteins
-    # if(testmodeAns == 'simul'){
-      # write.csv(firstSigDF_protA,
-      #           paste(loc, '20231019_simulation/', today, '_', simulFile_base, 
-      #                 '_allSignif', FC_cutoff, 'Xcutoff.csv', sep=''), 
-      #           row.names = FALSE)
-    # } else if (testmodeAns == 'n'){
-    #   write.csv(firstSigDF_protA,
-    #   paste(loc,today,'_allSignif',FC_cutoff,'Xcutoff.csv',sep=''),
-    #   row.names = FALSE)}
+    if(simulAns == 'y'){
+    write.csv(firstSigDF_protA,
+              paste(TCfile_loc, TCfile_base,
+                    '_allSignif', FC_cutoff, 'Xcutoff.csv', sep=''),
+              row.names = FALSE)
+    } else if (simulAns == 'n'){
+      write.csv(firstSigDF_protA,
+      paste(loc,today,'_allSignif',FC_cutoff,'Xcutoff.csv',sep=''),
+      row.names = FALSE)
+    }
     #######################################
     #######################################
     
@@ -1500,16 +1508,17 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
      #use exp.evid., DB, textmining; minimum total score of 'expEvid_cut'
   
     #STRING was searched with ORFs and may have replaced some gene names
-    if (testmodeAns == 'n'){
+    if (simulAns == 'n'){
     STRING_1shell= read.table(paste(loc,'20230313_allSignif_STRING1exp_',FC_cutoff,
                                     'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),sep='\t',
                               header=TRUE, stringsAsFactors = FALSE)
     # STRING_1shell= read.table(paste(loc,'20230228_STRING_Kanshin_fromS2_1shell_texExDB_0.7.tsv',sep=''),sep='\t',
     #                           header=TRUE, stringsAsFactors = FALSE)
-    } else if (testmodeAns == 'simul'){
-      STRING_1shell= read.table(paste(loc,'20231019_simulation/', simulFile_base,
-        '_STRING1exp_', FC_cutoff,'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),
-                sep='\t', header=TRUE, stringsAsFactors = FALSE)
+    } else if (simulAns == 'y'){
+      STRING_1shell= read.table(
+        paste(TCfile_loc, TCfile_base, '_STRING1exp_', FC_cutoff,
+              'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),
+        sep='\t', header=TRUE, stringsAsFactors = FALSE)
     }
        #use the maximally expanded STRING network I am going to use in this analysis
     
@@ -1538,17 +1547,11 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     ###########################################
     ######## ANALYSIS of the unexpanded network
     load_intConfcut= 0.7 #cutoff for file to load
-    if(testmodeAns == 'n'){
-      STRunexpand_allEvid= read.table(
-        paste(loc,'20230313_allSignif_STRINGunexp_',FC_cutoff,
-              'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),sep='\t',
-                                    header=TRUE, stringsAsFactors = FALSE)
-    } else if (testmodeAns == 'simul'){
-      STRunexpand_allEvid= read.table(
-        paste(loc,'20231019_simulation/', simulFile_base,
-        '_STRING1exp_', FC_cutoff,'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),
-                         sep='\t', header=TRUE, stringsAsFactors = FALSE)
-    }
+    STRunexpand_allEvid= read.table(
+      paste(TCfile_loc, TCfile_base,
+            '_STRING1exp_', FC_cutoff,'Xcutoff_TexExDB',expEvid_cut,'.tsv',sep=''),
+      sep='\t', header=TRUE, stringsAsFactors = FALSE)
+    
     #convert from gene names to protein names
     STRunexpand_allEvid$node1= sapply(STRunexpand_allEvid$node1,str_to_title)
     STRunexpand_allEvid$node2= sapply(STRunexpand_allEvid$node2,str_to_title)
@@ -1619,11 +1622,6 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     STRunexpand_directed_r$type_from= STRunexpand_directed_copy$type_to
     STRunexpand_directed_r$type_to= STRunexpand_directed_copy$type_from
     STRunexpand_directed= rbind.data.frame(STRunexpand_directed_f,STRunexpand_directed_r)
-    
-    #extract paths that do not require temporal ordering of nodes
-    paths_unexpand_noTempOrd= 
-      extract_paths(currEdges_exp=STRunexpand_directed,max_St_betwSliceTerm=max_St_betwSliceTerm,
-                    max_pathLenSt=max_pathLenSt,end_prot=NA)
     
     #reduce the DF to edges between neighboring TPs or within the same TP
     STRunexpand_directed_tempOrd= STRunexpand_directed[
@@ -1790,10 +1788,12 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
     dev.off()
     plot_L= c(plot_L,'B1'=list(B1))
     
-    #divide graph into communities: plot; plot within-cluster-SSQ
-    out = mark_communities(STRING_net, plot_L)
+    if(simulAns == 'n'){
+      #divide graph into communities: plot; plot within-cluster-SSQ
+      out = mark_communities(STRING_net, plot_L)
     STRING_net= out[[1]]
     plot_L= out[[2]]
+    }    
     
     #Summarize underlying network
     par(mfrow=c(2,1),mar=c(4,5,1,1))
@@ -2237,7 +2237,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
   length(allNodes[is.na(match(allNodes,duplNodes))]) #nodes only occurring once
   
   ## COUNT where losses occurred
-  if(testmodeAns== 'n' | testmodeAns == 'simul') {  #only if not in testmode
+  if(testmodeAns== 'n') {  #only if not in testmode
     noSigfProt= dim(firstSigDF_protA)[1]  #how many significant proteins originally
     #noInSTRING= dim(firstSigDF_prot)[1] #in STRING DB; this is not useful, because STRING output is already filtered
     firstSigDF_prot$Gene [firstSigDF_prot$Gene %in% 
@@ -2403,7 +2403,7 @@ for (PC_ans_idx in seq_along(PC_ans_vec)){
                                      V(all_t_graph_sG1_N3)$type=='out-term'],breaks=70,col=rgb(0,0,1,0.25),alpha=0.5,add=TRUE)
 
   #correlate betweenness in current network with betweenness in underlying network for current nodes
-  if(testmodeAns== 'n' | testmodeAns == 'simul'){
+  if(testmodeAns== 'n'){
     corresp_btwns_underl= btwns_underl[match(V(all_t_graph_sG1_N3)$name, V(STRING_net)$name)]
   } else if (testmodeAns== 'y') {
     corresp_btwns_underl= btwns_underl[match(V(all_t_graph_sG1_N3)$name, V(g_test)$name)]
