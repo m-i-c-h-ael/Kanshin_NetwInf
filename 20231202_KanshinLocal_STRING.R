@@ -330,6 +330,29 @@ getSteiner= function(underlNetw,subgr,t1,t2,subgr_idx,design,
 }
 ########################################
 
+depthFirstSearch
+# Aim: find all paths over consecutive TPs, without skipping TP
+# Store three lists: 1, stack, 2, recorded paths 3, visited nodes
+# Start from a node significant at the first TP; add it to stack
+# Move on to adjacent node: any adjacent node is allowed, but if it is not of
+ # the subsequent TP, count it as Steiner node
+ #record first node as visited; add new node on top of stack
+# Keep moving and recording visited notdes until no further consecutive node or 
+ #max. Steiner limit is exceeded;
+ # then record the path (immediately trim Steiner nodes from end)
+ # remove the last node from stack and try new adjacent node to node that is now
+ # on top of the stack if adjacent node has not yet been visited
+ # record all paths in this way; if node connects to already visited node, search
+  # all recorded paths for this node; consider their downstream protions, but
+  # re-score all nodes to the subsequent TP as Steiner nodes
+
+ #As you allow other TPs than the first as starting TP, move on to next TP
+  # repeat the algorithm keeping the recorded paths and visited nodes you already
+  # have
+  # before starting, eliminate all start nodes that have already be recorded on
+   # paths with their TP of significance
+
+
 ################################
 ################################
 extract_paths= function(currEdges_exp,max_St_betwSliceTerm,max_pathLenSt,end_prot){
